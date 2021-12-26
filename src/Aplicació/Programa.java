@@ -2,16 +2,28 @@ package Aplicació;
 
 import java.util.*;
 
+import Dades.*;
+import java.util.*;
+
 public class Programa {
-	private static Scanner teclado=new Scanner(System.in);
+	private static Scanner teclado;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-			mostrarMenu();
+			//mostrarMenu();
+		LlistaGeneric carlos=new LlistaGeneric(4);
+		carlos.afegir("Hola");
+		carlos.afegir(123);
+		System.out.println(carlos.consultatIessim(0));
+		
+			
+			
 			
 	}
 	
 	public static void mostrarMenu() {
-		
+		teclado=new Scanner(System.in);
+		boolean leave=false;
+		do {
 		System.out.println("Benvingut al programa, escolleix la opció que vols executar");
 		System.out.println("1- Carregar les dades dels fitxers");
 		System.out.println("2- Llistar les dades de totes les plantacions");
@@ -29,7 +41,7 @@ public class Programa {
 		System.out.println("13- Mostrar la quantitat de CO2 que permet absorbir cada rodal d’una plantació en l’any actual.");
 		System.out.println("14- Mostrar la quantitat de CO2 que permet absorbir el conjunt d'unitats plantades d'una"
 				+ " espècie eb l'any actual.");
-		System.out.println("15- Sortir del programa");	
+		System.out.println("15- Sortir del programa");
 		switch(getMenuOption()) {
 		case 1:
 			//leerFichero();
@@ -61,13 +73,25 @@ public class Programa {
 		case 14:
 			break;
 		case 15:
+			leave=true;
 			break;
 		}
+		}while(!leave);
 		
 	}
 	public static int getMenuOption() {
-		int num=teclado.nextInt();
+		int num;
+		do {
+		num=teclado.nextInt();
+		if(num<1||num>15) {
+			System.out.println("El número introduït ha de ser >1 i <15, torna a provar");
+		}}while(num<1||num>15);
 		return num;
 	}
+	public static <E> void imprimir(E valors) {
+		System.out.println(valors);
+	}
+	
+	
 	
 }
