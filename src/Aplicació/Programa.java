@@ -10,6 +10,19 @@ public class Programa {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 			//mostrarMenu();
+		int numero=3;
+		System.out.println(numero++);
+		System.out.println(numero);
+		System.out.println(++numero);
+		
+		int []tabla= {1,2,3,4,};
+		int []tabla2= {5,6,7,8};
+		
+		int [][]array={tabla,tabla2};
+		
+		System.out.println(array[0][1]);
+		
+		
 		LlistaGeneric carlos=new LlistaGeneric(4);
 		carlos.afegir("Hola");
 		carlos.afegir(123);
@@ -19,6 +32,7 @@ public class Programa {
 			
 			
 	}
+
 	
 	public static void mostrarMenu() {
 		teclado=new Scanner(System.in);
@@ -79,6 +93,8 @@ public class Programa {
 		}while(!leave);
 		
 	}
+	
+	
 	public static int getMenuOption() {
 		int num;
 		do {
