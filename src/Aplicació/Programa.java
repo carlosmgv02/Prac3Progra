@@ -10,13 +10,12 @@ public class Programa {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 			//mostrarMenu();
-		int numero=3;
-		System.out.println(numero++);
-		System.out.println(numero);
-		System.out.println(++numero);
-		
+		LlistaGeneric prueba=new LlistaGeneric(3);
+		prueba.afegir2d("Carlos", "Numero de plantas");
+		prueba.afegir2d(123, "Manuel");
 		int []tabla= {1,2,3,4,};
 		int []tabla2= {5,6,7,8};
+		System.out.println(prueba);
 		
 		int [][]array={tabla,tabla2};
 		
