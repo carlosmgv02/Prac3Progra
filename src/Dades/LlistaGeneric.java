@@ -2,39 +2,34 @@ package Dades;
 
 import java.util.Arrays;
 
+import Exceptions.OutOfRangeException;
+
 public class LlistaGeneric<E> implements DefGeneric <E> {
 	private E[] llista;
-	private E[][]llista2d;
 	private int nElems;
-	private int i=1;
-	private int j=1;
 	
 	public LlistaGeneric(int dim) {
 		llista =(E[])new Object[dim];
 		nElems=0;
-		llista2d=(E[][])new Object[dim][dim];
-		llista2d[0][1]=(E)"Nom científic";
-		llista2d[0][2]=(E)"Num plantes";
+		
 		
 	}
-	
-	public boolean  afegir(E elem) {
+	public boolean  afegir(E elem) throws OutOfRangeException {
 		if(nElems<llista.length) {
 			llista[nElems]=elem;
 			nElems++;
 			return true;
 		}
-		return false;
+		throw new OutOfRangeException();
 	}
-	
-	public boolean afegir2d(E elem, E cantid) {
-		if(nElems<llista2d.length) {
-			llista2d[i][j]=elem;
-			llista2d[i++][j+1]=cantid;
-			nElems++;
-			return true;
-		}
-		return false;
+	public void eliminar (int i) {
+		if(i<llista.length)
+			for(int j=i;j<llista.length;j++) {
+				if(j==llista.length-1)
+					llista[j]=null;
+				else
+					llista[j]=llista[j+1];
+			}
 	}
 	
 	public int nElems() {
@@ -47,14 +42,7 @@ public class LlistaGeneric<E> implements DefGeneric <E> {
 		return null;
 	}
 
-	@Override
-	public String toString() {
-		
-		String devolver=new String();
-		for(i=0;i<nElems;i++)
-			devolver=devolver + "[ "+llista2d[i][j]+", "+llista2d[i][j+1]+"]\n";
-		return devolver;
-	}
+	
 	
 	
 

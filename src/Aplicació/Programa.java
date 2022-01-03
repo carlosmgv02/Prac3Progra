@@ -3,16 +3,21 @@ package Aplicació;
 import java.util.*;
 
 import Dades.*;
+import Exceptions.OutOfRangeException;
+
 import java.util.*;
 
 public class Programa {
 	private static Scanner teclado;
-	public static void main(String[] args) {
+	public static void main(String[] args) throws OutOfRangeException {
 		// TODO Auto-generated method stub
 			//mostrarMenu();
-		LlistaGeneric prueba=new LlistaGeneric(3);
-		prueba.afegir2d("Carlos", "Numero de plantas");
-		prueba.afegir2d(123, "Manuel");
+		LlistaGeneric prueba=new LlistaGeneric(4);
+		prueba.afegir("carlos");
+		prueba.afegir(12);
+		prueba.afegir(123);
+		prueba.afegir("Genis");
+		prueba.eliminar(3);
 		int []tabla= {1,2,3,4,};
 		int []tabla2= {5,6,7,8};
 		System.out.println(prueba);

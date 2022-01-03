@@ -1,6 +1,6 @@
 package Dades;
 
-public class Plantacions {
+public class Plantacions implements DefGeneric{
 	private int anyPlantacio;
 	private String tipusRodal ;
 	private String tipusTerreny;
@@ -55,5 +55,6 @@ public class Plantacions {
 		return "Plantacions [anyPlantacio=" + anyPlantacio + ", tipusRodal=" + tipusRodal + ", tipusTerreny="
 				+ tipusTerreny + ", superficie=" + superficie + "]";
 	}
+	
 	
 }
