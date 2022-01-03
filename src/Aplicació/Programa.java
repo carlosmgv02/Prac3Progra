@@ -13,9 +13,10 @@ public class Programa {
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
 			//mostrarMenu();
-		leerFichero();
-		teclado=new Scanner(new File("Terreny.csv"));
-		LlistaGeneric <Planta>prova=new LlistaGeneric<Planta>(3);
+		
+		teclado=new Scanner(new File("src/Terreny.csv"));
+		LlistaGeneric <Terreny>prova=leerFichero();
+		System.out.println(prova);
 		Planta one=new Planta("1",1);
 		LlistaGeneric <Plantacions> plantacio;
 		
@@ -47,24 +48,33 @@ public class Programa {
 	}
 
 	public static LlistaGeneric<Terreny> leerFichero() throws FileNotFoundException, NumberFormatException, OutOfRangeException{
-		int nLines=5;
+		int nLines=10;
 		LlistaGeneric<Terreny>terreno=new LlistaGeneric<Terreny>(6);
 		teclado=new Scanner(new File("src/Terreny.csv"));
 		String[] capçalera=teclado.nextLine().split(";");
 		String []split=null;
-		split=teclado.nextLine().split(";");
-		String nom=split[0];
-		Terreny ter=new Terreny(nom,split[1],Integer.parseInt(split[2]));
+		/*split=teclado.nextLine().split(";");
+		String nom=split[0];*/
+		Terreny ter=null;
+		boolean first=false;
+		int i=0;
+		for( i=0;i<nLines;i++) {
 		
-		for(int i=0;i<nLines;i++) {
-			if(i==nLines-1) {
-				terreno.afegir(ter);
+		
+			
 			split=teclado.nextLine().split(";");
-			ter.afegirPlanta(split[1],Integer.parseInt(split[2]));
-			
-			
-		}
-		return null;
+			if(!split[0].equalsIgnoreCase("/")) {
+				ter=new Terreny(split[0],split[1],Integer.parseInt(split[2]));
+			first=true;
+			}
+			if(!first) {
+				ter.afegirPlanta(split[1],Integer.parseInt(split[2]));
+			}
+			first=false;
+			if(i==4||i==9) { 
+				terreno.afegir(ter);;
+		}}
+		return terreno;
 		
 		
 		

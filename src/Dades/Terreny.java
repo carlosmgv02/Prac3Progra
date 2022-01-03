@@ -30,9 +30,15 @@ public class Terreny  {
 		else return null;
 	}
 	public void setiNom(String nom, int i) {
-		if(i<nomPlanta.length&&!nom.isEmpty())
-			this.nomPlanta[i] = nom;
+		if(i<nomPlanta.length()&&!nom.isEmpty())
+			this.nomPlanta.setIessim(i, nom); 
 	}
+
+	@Override
+	public String toString() {
+		return "Terreny [nomTerreny=" + nomTerreny + ", unitats=" + unitats + ", nomPlanta=" + nomPlanta + "]";
+	}
+	
 	
 	
 	

@@ -57,6 +57,12 @@ public class LlistaGeneric<E> implements DefGeneric <E> {
 			llista[i]=object;
 		
 	}
+	@Override
+	public String toString() {
+		
+		return "LlistaGeneric [llista=" + Arrays.toString(llista) + "]";
+	}
+	
 
 	
 	

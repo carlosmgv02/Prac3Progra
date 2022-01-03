@@ -1,6 +1,11 @@
 Nom tipus de terreny;Nom Planta;Unitats plantades per Hra
 Calcari Solana;Pinus sylvestris;150
- ;Pinus nigra;130
- ;Fraxinus excelsior;220
- ;Acer pseudoplatanus;210
- ;Populus nigra;190
+/;Pinus nigra;130
+/;Fraxinus excelsior;220
+/;Acer pseudoplatanus;210
+/;Populus nigra;190
+CalcariObaga;Pinus sylvestris;190
+/;Corylus Avellana;200
+/;Spartium junceum;150
+/;Quercus ilex;200
+/;Betula alba;160
