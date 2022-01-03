@@ -22,6 +22,7 @@ public class LlistaGeneric<E> implements DefGeneric <E> {
 		}
 		throw new OutOfRangeException();
 	}
+	
 	public void eliminar (int i) {
 		if(i<llista.length)
 			for(int j=i;j<llista.length;j++) {
@@ -31,15 +32,30 @@ public class LlistaGeneric<E> implements DefGeneric <E> {
 					llista[j]=llista[j+1];
 			}
 	}
+	public boolean completo() {
+		if(nElems==llista.length) {
+			return true;
+		}
+		else return false;
+	}
 	
 	public int nElems() {
 		return nElems;
+	}
+
+	public int length() {
+		return llista.length;
 	}
 	
 	public E consultatIessim(int i) {
 		if(i<nElems)
 			return llista[i];
 		return null;
+	}
+	public void setIessim(int i, E object) {
+		if(i<llista.length&&llista[i]==null)
+			llista[i]=object;
+		
 	}
 
 	

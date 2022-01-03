@@ -7,6 +7,7 @@ public interface DefGeneric <E> {
 	//public int nElems();
 	public E consultatIessim(int i);
 	public void eliminar (int any);
+	public boolean completo();
 	
 	
 }

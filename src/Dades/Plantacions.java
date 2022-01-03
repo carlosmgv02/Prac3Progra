@@ -1,60 +1,50 @@
 package Dades;
 
-public class Plantacions implements DefGeneric{
-	private int anyPlantacio;
-	private String tipusRodal ;
-	private String tipusTerreny;
-	private float superficie;
+public class Plantacions {
+	private int any;
+	private Rodals[]rodal;
+	private String nomPlantacio;
 
-	public Plantacions(String rodal, String terreny, float superf, int anyPlantacio) {
-		this.anyPlantacio = anyPlantacio;
-		this.tipusTerreny = terreny;
-		this.superficie = superf;
-		this.tipusRodal = rodal;
-	}
-	public Plantacions() {
-		anyPlantacio = 0;
-		tipusRodal = new String();
-		tipusTerreny = new String();
-		superficie = 0f;
+	public Plantacions(Rodals rodals,int any,String nom) {
+		this.any=any;
+		this.nomPlantacio=nom;
+		this.rodal=new Rodals[10];
+		this.rodal[0]=rodals;
 	}
 	
+	
 	public int getAnyPlantacio() {
-		return anyPlantacio;
+		return any;
 	}
 	
 	public void setAnyPlantacio(int anyPlantacio) {
-		this.anyPlantacio = anyPlantacio;
+		this.any = any;
 	}
 	
-	public String getTipusRodal() {
-		return tipusRodal;
+	public Rodals getTipusRodal(int i) {
+		return rodal[i];
 	}
-	public void setTipusRodal(String tipusRodal) {
-		this.tipusRodal = tipusRodal;
-	}
-	
-	public String getTipusTerreny() {
-		return tipusTerreny;
+	public void setTipusRodal(Rodals tipusRodal, int i) {
+		this.rodal[i] = tipusRodal;
 	}
 	
-	public void setTipusTerreny(String tipusTerreny) {
-		this.tipusTerreny = tipusTerreny;
+	public Terreny getTipusTerreny(int i) {
+		return rodal[i].getTerreny();
 	}
 	
-	public float getSuperficie() {
-		return superficie;
+	public void setTipusTerreny(Terreny tipusTerreny,int i) {
+		this.rodal[i].setTerreny(tipusTerreny);
 	}
 	
-	public void setSuperficie(float superficie) {
-		this.superficie = superficie;
+	public float getSuperficie(int i) {
+		return rodal[i].getSuperficie();
+	}
+	
+	public void setSuperficie(int i,float superficie) {
+		this.rodal[i].setSuperficie(superficie);
 	}
 
-	@Override
-	public String toString() {
-		return "Plantacions [anyPlantacio=" + anyPlantacio + ", tipusRodal=" + tipusRodal + ", tipusTerreny="
-				+ tipusTerreny + ", superficie=" + superficie + "]";
-	}
+	
 	
 	
 }

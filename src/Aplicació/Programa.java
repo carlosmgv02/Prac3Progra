@@ -1,5 +1,6 @@
 package Aplicació;
 
+import java.io.*;
 import java.util.*;
 
 import Dades.*;
@@ -9,9 +10,17 @@ import java.util.*;
 
 public class Programa {
 	private static Scanner teclado;
-	public static void main(String[] args) throws OutOfRangeException {
+	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
 			//mostrarMenu();
+		leerFichero();
+		teclado=new Scanner(new File("Terreny.csv"));
+		LlistaGeneric <Planta>prova=new LlistaGeneric<Planta>(3);
+		Planta one=new Planta("1",1);
+		LlistaGeneric <Plantacions> plantacio;
+		
+			
+		
 		LlistaGeneric prueba=new LlistaGeneric(4);
 		prueba.afegir("carlos");
 		prueba.afegir(12);
@@ -27,17 +36,42 @@ public class Programa {
 		System.out.println(array[0][1]);
 		
 		
-		LlistaGeneric carlos=new LlistaGeneric(4);
+		/*LlistaGeneric carlos=new LlistaGeneric(4);
 		carlos.afegir("Hola");
 		carlos.afegir(123);
 		System.out.println(carlos.consultatIessim(0));
-		
+		*/
 			
 			
 			
 	}
 
-	
+	public static LlistaGeneric<Terreny> leerFichero() throws FileNotFoundException, NumberFormatException, OutOfRangeException{
+		int nLines=5;
+		LlistaGeneric<Terreny>terreno=new LlistaGeneric<Terreny>(6);
+		teclado=new Scanner(new File("src/Terreny.csv"));
+		String[] capçalera=teclado.nextLine().split(";");
+		String []split=null;
+		split=teclado.nextLine().split(";");
+		String nom=split[0];
+		Terreny ter=new Terreny(nom,split[1],Integer.parseInt(split[2]));
+		
+		for(int i=0;i<nLines;i++) {
+			if(i==nLines-1) {
+				terreno.afegir(ter);
+			split=teclado.nextLine().split(";");
+			ter.afegirPlanta(split[1],Integer.parseInt(split[2]));
+			
+			
+		}
+		return null;
+		
+		
+		
+		
+		
+	}
+
 	public static void mostrarMenu() {
 		teclado=new Scanner(System.in);
 		boolean leave=false;
