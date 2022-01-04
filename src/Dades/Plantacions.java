@@ -18,7 +18,7 @@ public class Plantacions {
 	}
 	
 	public void setAnyPlantacio(int anyPlantacio) {
-		this.any = any;
+		this.any = anyPlantacio;
 	}
 	
 	public Rodals getTipusRodal(int i) {
