@@ -33,14 +33,7 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 			}
 	}
 
-	public void modificarAny (int nouAny, String plantacio) {
-		for(int i=0; i<llista.length;i++) {
-			if(llista[i].nomPlantacio == plantacio)
-				llista[i].any = nouAny;
-			else
-				llista[i].any = llista[i + 1];
-		}	
-	}
+	
 
 	public void modificaRodal(Rodals rodal) {
 
@@ -79,8 +72,18 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 
 	@Override
 	public String toString() {
-
-		return "LlistaGeneric [llista=" + Arrays.toString(llista) + "]";
+		boolean first=false;
+		String devolver=new String();
+		for(int i=0;i<llista.length;i++) {
+			
+			devolver=devolver+llista[i];
+			if(i<llista.length-1&&first)
+				devolver=devolver+",";
+			first=true;
+		}
+		devolver=devolver+"\n";
+		//return "["+Arrays.toString(llista);
+		return devolver;
 	}
 
 }

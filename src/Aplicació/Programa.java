@@ -15,8 +15,10 @@ public class Programa {
 			//mostrarMenu();
 		
 		teclado=new Scanner(new File("src/Terreny.csv"));
-		LlistaGeneric <Terreny>prova=leerFichero();
-		System.out.println(prova);
+		//LlistaGeneric <Terreny>prova=leerTerreno();
+		//leerPlantaciones();
+		System.out.println(leerPlantaciones());
+		//System.out.println(prova);
 		Planta one=new Planta("1",1);
 		LlistaGeneric <Plantacions> plantacio;
 		
@@ -37,21 +39,44 @@ public class Programa {
 		System.out.println(array[0][1]);
 		
 		
-		/*LlistaGeneric carlos=new LlistaGeneric(4);
-		carlos.afegir("Hola");
-		carlos.afegir(123);
-		System.out.println(carlos.consultatIessim(0));
-		*/
+		
 			
 			
 			
 	}
+	public static LlistaGeneric<Plantacions>leerPlantaciones()throws FileNotFoundException, OutOfRangeException{
+		int nLines=12;
+		LlistaGeneric<Plantacions>plantacions=new LlistaGeneric<Plantacions>(2);
+		teclado=new Scanner(new File("src/Plantacions.csv"));
+		teclado.nextLine();
+		String []split=null;
+		int i=0;
+		boolean first=false;
+		Plantacions plant=null;
+		for(i=0;i<nLines;i++) {
+			split=teclado.nextLine().split(";");
+			if(!split[0].equalsIgnoreCase(" "))
+			{
+				
+				plant=new Plantacions(split[0],Integer.parseInt(split[1]),new Rodals(split[3],Float.parseFloat(split[4])));
+			first=true;}
+			if(!first) {
+				plant.setTipusRodal(new Rodals(split[3],Float.parseFloat(split[4])));
+			}
+			first=false;
+			if(i==4||i==11) {
+				plantacions.afegir(plant);
+			}
+			
+		}
+		return plantacions;
+	}
 
-	public static LlistaGeneric<Terreny> leerFichero() throws FileNotFoundException, NumberFormatException, OutOfRangeException{
+	public static LlistaGeneric<Terreny> leerTerreno() throws FileNotFoundException, NumberFormatException, OutOfRangeException{
 		int nLines=10;
-		LlistaGeneric<Terreny>terreno=new LlistaGeneric<Terreny>(6);
+		LlistaGeneric<Terreny>terreno=new LlistaGeneric<Terreny>(2);
 		teclado=new Scanner(new File("src/Terreny.csv"));
-		String[] capçalera=teclado.nextLine().split(";");
+		teclado.nextLine();
 		String []split=null;
 		/*split=teclado.nextLine().split(";");
 		String nom=split[0];*/
@@ -59,9 +84,6 @@ public class Programa {
 		boolean first=false;
 		int i=0;
 		for( i=0;i<nLines;i++) {
-		
-		
-			
 			split=teclado.nextLine().split(";");
 			if(!split[0].equalsIgnoreCase("/")) {
 				ter=new Terreny(split[0],split[1],Integer.parseInt(split[2]));
@@ -75,11 +97,6 @@ public class Programa {
 				terreno.afegir(ter);;
 		}}
 		return terreno;
-		
-		
-		
-		
-		
 	}
 
 	public static void mostrarMenu() {

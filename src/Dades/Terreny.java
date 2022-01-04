@@ -36,7 +36,7 @@ public class Terreny  {
 
 	@Override
 	public String toString() {
-		return "Terreny [nomTerreny=" + nomTerreny + ", unitats=" + unitats + ", nomPlanta=" + nomPlanta + "]";
+		return "Terreny =" + nomTerreny + "\n\tunitats=" + unitats + "\tnomPlanta=" + nomPlanta ;
 	}
 	
 	
