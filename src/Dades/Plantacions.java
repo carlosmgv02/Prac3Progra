@@ -52,16 +52,26 @@ public class Plantacions {
 	public void setSuperficie(int i,float superficie) {
 		this.rodal[i].setSuperficie(superficie);
 	}
+	public boolean hasTipusTerreny(String terreny){
+		Rodals[]devolver=new Rodals[rodal.length];
+		int nEl=0;
+		int i=0;
+		for( i=0;rodal[i]!=null;i++) {
+			if(rodal[i].getTerreny().equalsIgnoreCase(terreny)) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
 	@Override
 	public String toString() {
 		String devolver=new String();
 		for(int i=0;i<rodal.length&&rodal[i]!=null;i++) {
-			if(i!=0)
-				devolver=devolver +"\t\t"+nomPlantacio+ ", "+any+", "+rodal[i]+"\n";
-			else
-				devolver=devolver +nomPlantacio+ ", "+any+", "+rodal[i]+"\n";
+			
+				devolver=devolver + "\t\tany= "+any+", "+rodal[i]+"";
 		}
-		devolver="Plantacions[ "+",  "+ devolver;
+		devolver="Plantacions [ "+nomPlantacio+"] \n"+ devolver+"\n";
 		//return "Plantacions ["+nomPlantacio+ ", any=" + any + ", rodal=" + Arrays.toString(rodal)  + "]";
 		return devolver;
 	}

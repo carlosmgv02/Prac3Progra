@@ -21,7 +21,7 @@ public class Rodals {
 	}
 	@Override
 	public String toString() {
-		return "terreny=" + terreny + ", superficie=" + superficie + "]\n";
+		return "Rodal[ terreny=" + terreny + ", superficie=" + superficie + "]\n";
 	}
 	
 

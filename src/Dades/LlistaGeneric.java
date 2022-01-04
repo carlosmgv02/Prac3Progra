@@ -40,7 +40,7 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 	}
 
 	public void modificarAnyActual(int any) {
-
+			
 	}
 
 	public boolean completo() {
@@ -69,6 +69,7 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 			llista[i] = object;
 
 	}
+	 
 
 	@Override
 	public String toString() {
@@ -82,6 +83,7 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 			first=true;
 		}
 		devolver=devolver+"\n";
+		
 		//return "["+Arrays.toString(llista);
 		return devolver;
 	}

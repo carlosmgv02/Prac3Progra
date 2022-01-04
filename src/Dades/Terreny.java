@@ -36,7 +36,12 @@ public class Terreny  {
 
 	@Override
 	public String toString() {
-		return "Terreny =" + nomTerreny + "\n\tunitats=" + unitats + "\tnomPlanta=" + nomPlanta ;
+		String devolver =new String();
+		for(int i=0;i<unitats.length();i++) {
+			devolver=devolver+"\t\tNom planta = "+nomPlanta.consultatIessim(i)+", unitats = "+unitats.consultatIessim(i)+"\n";
+		}
+		//return "Terreny =" + nomTerreny + "\n\tunitats=" + unitats + "\tnomPlanta=" + nomPlanta ;
+		return "Terreny = " + nomTerreny +"\n"+ devolver +"\n";
 	}
 	
 	

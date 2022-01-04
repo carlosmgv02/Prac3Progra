@@ -12,36 +12,18 @@ public class Programa {
 	private static Scanner teclado;
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
-			//mostrarMenu();
-		
+			mostrarMenu();
+		/*
 		teclado=new Scanner(new File("src/Terreny.csv"));
-		//LlistaGeneric <Terreny>prova=leerTerreno();
-		//leerPlantaciones();
+		LlistaGeneric <Terreny>prova=leerTerreno();
+		leerPlantaciones();
+		
 		System.out.println(leerPlantaciones());
 		//System.out.println(prova);
 		Planta one=new Planta("1",1);
 		LlistaGeneric <Plantacions> plantacio;
+		*/
 		
-			
-		
-		LlistaGeneric prueba=new LlistaGeneric(4);
-		prueba.afegir("carlos");
-		prueba.afegir(12);
-		prueba.afegir(123);
-		prueba.afegir("Genis");
-		prueba.eliminar(3);
-		int []tabla= {1,2,3,4,};
-		int []tabla2= {5,6,7,8};
-		System.out.println(prueba);
-		
-		int [][]array={tabla,tabla2};
-		
-		System.out.println(array[0][1]);
-		
-		
-		
-			
-			
 			
 	}
 	public static LlistaGeneric<Plantacions>leerPlantaciones()throws FileNotFoundException, OutOfRangeException{
@@ -97,15 +79,16 @@ public class Programa {
 				terreno.afegir(ter);;
 		}}
 		return terreno;
+		
 	}
 
-	public static void mostrarMenu() {
-		teclado=new Scanner(System.in);
+	public static void mostrarMenu() throws FileNotFoundException, OutOfRangeException {
+		
 		boolean leave=false;
 		do {
 		System.out.println("Benvingut al programa, escolleix la opció que vols executar");
 		System.out.println("1- Carregar les dades dels fitxers");
-		System.out.println("2- Llistar les dades de totes les plantacions");
+		System.out.println("2- Llistar les dades de tots els tipus de terrenys");
 		System.out.println("3- Llistar les dades de totes les plantacions");
 		System.out.println("4- Llistar les dades de les plantacions que tenen algun rodal d'un tipus de terreny");
 		System.out.println("5- Donada una plantació, mostrar quantes unitats de cada espècie s'ha plantat");
@@ -121,13 +104,34 @@ public class Programa {
 		System.out.println("14- Mostrar la quantitat de CO2 que permet absorbir el conjunt d'unitats plantades d'una"
 				+ " espècie eb l'any actual.");
 		System.out.println("15- Sortir del programa");
+		LlistaGeneric<Plantacions> llistaPlantacions;
+		LlistaGeneric<Terreny>llistaTerreno;
+		
+		
 		switch(getMenuOption()) {
 		case 1:
 			//leerFichero();
 			break;
 		case 2:
+			llistaTerreno=leerTerreno();
+			System.out.println(llistaTerreno);
+			
 			break;
 		case 3:
+			llistaPlantacions=leerPlantaciones();
+			for(int i=0;llistaPlantacions.consultatIessim(i)!=null;i++) {
+				
+				if(llistaPlantacions.consultatIessim(i).hasTipusTerreny("CalcariSolana")) {
+					System.out.println("La finca "+i+" si que el conté");
+				}
+				else
+					System.out.println("La finca "+i+" no el conté");	
+			}
+			
+			
+			
+			
+			
 			break;
 		case 4:
 			break;
@@ -142,6 +146,7 @@ public class Programa {
 		case 9:
 			break;
 		case 10: 
+			
 			break;
 		case 11:
 			break;
@@ -161,12 +166,14 @@ public class Programa {
 	
 	
 	public static int getMenuOption() {
-		int num;
+		int num=0;
+		teclado=new Scanner(System.in);
 		do {
 		num=teclado.nextInt();
 		if(num<1||num>15) {
 			System.out.println("El número introduït ha de ser >1 i <15, torna a provar");
 		}}while(num<1||num>15);
+		
 		return num;
 	}
 	public static <E> void imprimir(E valors) {
