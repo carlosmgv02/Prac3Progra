@@ -38,7 +38,7 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 			if(llista[i].nomPlantacio == plantacio)
 				llista[i].any = nouAny;
 			else
-				llista[i].any = Plantacions[i + 1];
+				llista[i].any = llista[i + 1];
 		}	
 	}
 
