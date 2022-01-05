@@ -24,6 +24,13 @@ public class Terreny  {
 		this.nomPlanta.afegir(nom);
 		this.unitats.afegir(unitats);
 	}
+	public String getUnitats(){
+		String text=new String();
+		for(int i=0;unitats.consultatIessim(i)!=null;i++) {
+			text=text+"La planta "+nomPlanta.consultatIessim(i)+" té "+unitats.consultatIessim(i)+" unitats\n";
+		}
+		return text;
+	}
 	public String getiNom(int i) {
 		if(i<nomPlanta.length())
 			return nomPlanta.consultatIessim(i);
@@ -32,6 +39,11 @@ public class Terreny  {
 	public void setiNom(String nom, int i) {
 		if(i<nomPlanta.length()&&!nom.isEmpty())
 			this.nomPlanta.setIessim(i, nom); 
+	}
+	
+
+	public String getNomTerreny() {
+		return nomTerreny;
 	}
 
 	@Override

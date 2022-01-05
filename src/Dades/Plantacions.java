@@ -18,6 +18,9 @@ public class Plantacions {
 	public String getNomPlantacio() {
 		return nomPlantacio;
 	}
+	public int getNelems() {
+		return nElems;
+	}
 	
 	
 	public int getAnyPlantacio() {
@@ -27,7 +30,10 @@ public class Plantacions {
 	public void setAnyPlantacio(int anyPlantacio) {
 		this.any = anyPlantacio;
 	}
-	
+	/*
+	plants.consultatIessim(0).getTipusTerreny(1)
+	plants.consultatIessim(0).getTipusRodal(1).getTerreny()
+	*/
 	public Rodals getTipusRodal(int i) {
 		return rodal[i];
 	}
