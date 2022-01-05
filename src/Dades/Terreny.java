@@ -13,8 +13,8 @@ public class Terreny  {
 		this.nomTerreny=nomTerreny;
 		/*this.nomPlanta=new String[5];
 		/this.nomPlanta[0]=nomPlanta;*/
-		this.unitats=new LlistaGeneric<Integer>(5);
-		this.nomPlanta=new LlistaGeneric<String>(5);
+		this.unitats=new LlistaGeneric<Integer>(10);
+		this.nomPlanta=new LlistaGeneric<String>(10);
 		this.nomPlanta.afegir(nomPlanta);
 		this.unitats.afegir(unitats);
 		nElems=1;

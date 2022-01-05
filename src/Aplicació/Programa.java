@@ -14,7 +14,7 @@ public class Programa {
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
 
-		LlistaGeneric<Plantacions>plant=leerPlantaciones();
+		//LlistaGeneric<Plantacions>plant=leerPlantaciones();
 
 
 
@@ -40,6 +40,7 @@ public class Programa {
 
 
 	}
+	
 
 	public static LlistaGeneric<Plantacions> leerPlantaciones() throws FileNotFoundException, OutOfRangeException {
 		LlistaGeneric<Terreny>terreno=leerTerreno();
@@ -47,6 +48,7 @@ public class Programa {
 		LlistaGeneric<Plantacions> plantacions = new LlistaGeneric<Plantacions>(2);
 		teclado = new Scanner(new File("src/Plantacions.csv"));
 		teclado.nextLine();
+		String text=teclado.nextLine();
 		String[] split = null;
 		Terreny terreny=null;
 		int i = 0;
