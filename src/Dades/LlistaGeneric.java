@@ -11,7 +11,6 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 	public LlistaGeneric(int dim) {
 		llista = (E[]) new Object[dim];
 		nElems = 0;
-
 	}
 
 	public boolean afegir(E elem) throws OutOfRangeException {
@@ -32,17 +31,17 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 					llista[j] = llista[j + 1];
 			}
 	}
-
 	
-
 	public void modificaRodal(Rodals rodal) {
-
+		for(int i=0;i<llista.length;i++) {
+			if()
+		}
 	}
-
-	public void modificarAnyActual(int any) {
-			
+	
+	public void modifiarAnyPlantacio (Plantacions plantacio, String nomPlantacio) {
+	
 	}
-
+	
 	public boolean completo() {
 		if (nElems == llista.length) {
 			return true;
@@ -67,7 +66,6 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 	public void setIessim(int i, E object) {
 		if (i < llista.length && llista[i] == null)
 			llista[i] = object;
-
 	}
 	 
 
