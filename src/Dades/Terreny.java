@@ -5,9 +5,9 @@ import Exceptions.OutOfRangeException;
 public class Terreny  {
 	private String nomTerreny ;
 	private LlistaGeneric<Integer>unitats;
-	//private int []unitats;	
+		
 	private LlistaGeneric<String>nomPlanta;
-	//private String []nomPlanta;
+	
 	private int nElems;
 	public Terreny (String nomTerreny,  String nomPlanta,int unitats) throws OutOfRangeException{
 		this.nomTerreny=nomTerreny;

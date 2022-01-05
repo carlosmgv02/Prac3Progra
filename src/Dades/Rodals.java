@@ -1,16 +1,16 @@
 package Dades;
 
 public class Rodals {
-	String terreny;
+	Terreny terreny;
 	float superficie;
-	public Rodals (String terreny,float superficie) {
+	public Rodals (Terreny terreny,float superficie) {
 		this.terreny=terreny;
 		this.superficie=superficie;
 	}
-	public String getTerreny() {
+	public Terreny getTerreny() {
 		return terreny;
 	}
-	public void setTerreny(String terreny) {
+	public void setTerreny(Terreny terreny) {
 		this.terreny = terreny;
 	}
 	public float getSuperficie() {

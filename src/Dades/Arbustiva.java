@@ -6,5 +6,6 @@ public class Arbustiva extends Planta {
 		super(nombreCient, type);
 		this.absorcio=absorcio;
 	}
+	
 
 }

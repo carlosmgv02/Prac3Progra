@@ -37,11 +37,11 @@ public class Plantacions {
 		nElems++;
 	}
 	
-	public String getTipusTerreny(int i) {
+	public Terreny getTipusTerreny(int i) {
 		return rodal[i].getTerreny();
 	}
 	
-	public void setTipusTerreny(String tipusTerreny,int i) {
+	public void setTipusTerreny(Terreny tipusTerreny,int i) {
 		this.rodal[i].setTerreny(tipusTerreny);
 	}
 	
@@ -57,7 +57,7 @@ public class Plantacions {
 		int nEl=0;
 		int i=0;
 		for( i=0;rodal[i]!=null;i++) {
-			if(rodal[i].getTerreny().equalsIgnoreCase(terreny)) {
+			if(rodal[i].getTerreny().getiNom(i).equalsIgnoreCase(terreny)) {
 				return true;
 			}
 		}

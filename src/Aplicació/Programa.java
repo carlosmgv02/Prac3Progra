@@ -13,10 +13,11 @@ public class Programa {
 
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
-		System.out.println("Introdueixi l'any en que es troba.");
+		leerPlantaciones();
+		/*System.out.println("Introdueixi l'any en que es troba.");
 		teclado = new Scanner(System.in);
-		int anyActual = teclado.nextInt();
-		mostrarMenu();
+		int anyActual = teclado.nextInt();*/
+		//mostrarMenu();
 
 		/*
 		 * teclado=new Scanner(new File("src/Terreny.csv")); LlistaGeneric
@@ -25,28 +26,39 @@ public class Programa {
 		 * System.out.println(leerPlantaciones()); //System.out.println(prova); Planta
 		 * one=new Planta("1",1); LlistaGeneric <Plantacions> plantacio;
 		 */
-
+		
+		
+		
+		
+		
+	
+		
+		
 	}
 
 	public static LlistaGeneric<Plantacions> leerPlantaciones() throws FileNotFoundException, OutOfRangeException {
+		LlistaGeneric<Terreny>terreno=leerTerreno();
 		int nLines = 12;
 		LlistaGeneric<Plantacions> plantacions = new LlistaGeneric<Plantacions>(2);
 		teclado = new Scanner(new File("src/Plantacions.csv"));
 		teclado.nextLine();
 		String[] split = null;
+		Terreny terreny=null;
 		int i = 0;
 		boolean first = false;
 		Plantacions plant = null;
 		for (i = 0; i < nLines; i++) {
 			split = teclado.nextLine().split(";");
 			if (!split[0].equalsIgnoreCase(" ")) {
-
+				if(split[3].equalsIgnoreCase("CalcariSolana"))
+					terreny=terreno.consultatIessim(0);
+				else terreny=terreno.consultatIessim(1);
 				plant = new Plantacions(split[0], Integer.parseInt(split[1]),
-						new Rodals(split[3], Float.parseFloat(split[4])));
+						new Rodals(terreny, Float.parseFloat(split[4])));
 				first = true;
 			}
 			if (!first) {
-				plant.setTipusRodal(new Rodals(split[3], Float.parseFloat(split[4])));
+				plant.setTipusRodal(new Rodals(terreny, Float.parseFloat(split[4])));
 			}
 			first = false;
 			if (i == 4 || i == 11) {
@@ -64,6 +76,7 @@ public class Programa {
 		teclado = new Scanner(new File("src/Terreny.csv"));
 		teclado.nextLine();
 		String[] split = null;
+		
 		/*
 		 * split=teclado.nextLine().split(";"); String nom=split[0];
 		 */
@@ -157,7 +170,7 @@ public class Programa {
 				int nouAny = teclado.nextInt();
 				llistaPlantacions = leerPlantaciones();
 				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
-					if (llistaPlantacions.consultatIessim(i).getNomPlantacio() = nom)
+					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nom))
 						llistaPlantacions.consultatIessim(i).setAnyPlantacio(nouAny);
 					else
 						System.out.println("No s'ha trobat la plantació.");
@@ -168,8 +181,8 @@ public class Programa {
 			case 12:
 				System.out.println("Introudeixi el nou any ->");
 				teclado = new Scanner(System.in);
-				int nouAny = teclado.nextInt();
-				System.out.println(nouAny);
+				int nouany = teclado.nextInt();
+				System.out.println(nouany);
 				break;
 			case 13:
 				break;
