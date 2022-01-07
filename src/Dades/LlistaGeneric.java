@@ -32,16 +32,6 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 			}
 	}
 	
-	/*public void modificaRodal(Rodals rodal) {
-		for(int i=0;i<llista.length;i++) {
-			if()
-		}
-	}*/
-	
-	public void modifiarAnyPlantacio (Plantacions plantacio, String nomPlantacio) {
-	
-	}
-	
 	public boolean completo() {
 		if (nElems == llista.length) {
 			return true;

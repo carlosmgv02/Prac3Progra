@@ -185,12 +185,20 @@ public class Programa {
 			case 8:
 				break;
 			case 9:
+				System.out.println("Introdueixi el nom de la plantació a la que vol eliminar les dades ->");
+				teclado = new Scanner(System.in);
+				String name = teclado.nextLine();
+				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
+					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(name))
+						eliminar(i);
+					else
+						System.out.println("No s'ha trobat la plantació.");
 				break;
 			case 10:
-				System.out.println("Introudeixi el nom de la plantació a la que vol modificar l'any ->");
+				System.out.println("Introdueixi el nom de la plantació a la que vol modificar l'any ->");
 				teclado = new Scanner(System.in);
 				String nom = teclado.nextLine();
-				System.out.println("Introudeixi el nou any ->");
+				System.out.println("Introdueixi el nou any ->");
 				teclado = new Scanner(System.in);
 				int nouAny = teclado.nextInt();
 				llistaPlantacions = leerPlantaciones();
@@ -202,6 +210,24 @@ public class Programa {
 				}
 				break;
 			case 11:
+				System.out.println("Introdueixi el nom de la plantació a la que vol modificar el rodal ->");
+				teclado = new Scanner(System.in);
+				String nomPlantacio = teclado.nextLine();
+				System.out.println("Introdueixi la superfície que vol que tingui el seu rodal ->");
+				teclado = new Scanner(System.in);
+				float superficie = teclado.nextFloat();
+				llistaPlantacions = leerPlantaciones();
+				System.out.println("Introdueixi el tipus de terreny que vol que tingui el seu rodal ->");
+				teclado = new Scanner(System.in);
+				String tipusTerreny = teclado.next();
+				llistaPlantacions = leerPlantaciones();
+				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
+					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nomPlantacio))
+						llistaPlantacions.consultatIessim(i).setSuperficie(i, superficie);
+						llistaPlantacions.consultatIessim(i).getTipusRodal(i).setTerreny(null);
+					else
+						System.out.println("No s'ha trobat la plantació.");
+				}
 				break;
 			case 12:
 				System.out.println("Introudeixi el nou any ->");
