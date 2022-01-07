@@ -1,15 +1,22 @@
 package InterficieGrafica;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Interficie extends JFrame {
 //Funciona? 
+	
+	JPanel panel = new JPanel();
+	JLabel etiqueta = new JLabel();
 	public Interficie() {
+		
 		//Establir tamany de pantalla
 		this.setSize(500,500);
-		
 		//Li donem un nom a la finestra
 		setTitle("Prac 3");
 		
@@ -24,6 +31,8 @@ public class Interficie extends JFrame {
 		//Posem la fienstra al centre de la pantalla
 		setLocationRelativeTo(null);
 		
+
+		
 		iniciarComponents();
 		
 		//Quan tanquis la finestra finalitza TOT el programa
@@ -31,7 +40,11 @@ public class Interficie extends JFrame {
 	}
 	
 	private void iniciarComponents() {
-		JPanel panel = new JPanel();
+		colocarPanels();
+		colocarBotons();
+	}
+	
+	private void colocarPanels() {
 		
 		//Afegir el panel que acabem de crear
 		this.getContentPane().add(panel);
@@ -40,7 +53,7 @@ public class Interficie extends JFrame {
 		panel.setLayout(null);
 		
 		//Crear una etiqueta de text
-		JLabel etiqueta = new JLabel();
+		//JLabel etiqueta = new JLabel();
 		
 		//Establim el text de la etiqueta
 		etiqueta.setText("Hola");
@@ -51,5 +64,33 @@ public class Interficie extends JFrame {
 		//Agregar la etiqueta
 		panel.add(etiqueta);
 	}
-}
+	
+	
+	private void colocarBotons() {
+		//Creem un boto 
+		JButton boto1 = new JButton();
+		
+		
+		//Li donem posici oi tamany (x, y,ampadax, llargaday)
+		boto1.setBounds (100, 130, 100, 40);
+		
+		//Posem un text al boto
+		boto1.setText("click");
+		
+		//Activar o desactivar el boto
+		boto1.setEnabled(true);
+		
+		//Afegim el boto
+		panel.add(boto1);
+		
+		ActionListener oyendeDeAccion = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				etiqueta.setText("jkashdfkjadfs");
+			}
+		};
+		
+		boto1.addActionListener(oyendeDeAccion);
+	}
+} 
  
