@@ -15,6 +15,12 @@ public class Plantacions {
 		this.rodal[0]=rodals;
 		nElems=1;
 	}
+	public void deleteAll() {
+		any=0;
+		rodal=null;
+		nomPlantacio=null;
+		nElems=0;
+	}
 	public String getNomPlantacio() {
 		return nomPlantacio;
 	}

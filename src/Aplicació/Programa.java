@@ -47,7 +47,7 @@ public class Programa {
 		int nLines = 12;
 		LlistaGeneric<Plantacions> plantacions = new LlistaGeneric<Plantacions>(2);
 		teclado = new Scanner(new File("src/Plantacions.csv"));
-		teclado.nextLine();
+		
 		String text=teclado.nextLine();
 		String[] split = null;
 		Terreny terreny=null;
@@ -142,6 +142,7 @@ public class Programa {
 			System.out.println("15- Sortir del programa");
 			LlistaGeneric<Plantacions> llistaPlantacions = leerPlantaciones();
 			LlistaGeneric<Terreny> llistaTerreno = leerTerreno();
+			boolean found=false;
 
 			switch (getMenuOption()) {
 			case 1:
@@ -185,46 +186,53 @@ public class Programa {
 			case 8:
 				break;
 			case 9:
+				
 				System.out.println("Introdueixi el nom de la plantació a la que vol eliminar les dades ->");
 				teclado = new Scanner(System.in);
 				String name = teclado.nextLine();
-				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
-					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(name))
-						eliminar(i);
+				for (int i = 0; llistaPlantacions.consultatIessim(i) != null&&!found; i++) {
+					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(name)) {
+						llistaPlantacions.consultatIessim(i).deleteAll();found=true;}
 					else
 						System.out.println("No s'ha trobat la plantació.");
+				}
 				break;
 			case 10:
-				System.out.println("Introdueixi el nom de la plantació a la que vol modificar l'any ->");
+				
 				teclado = new Scanner(System.in);
+				System.out.println("Introdueixi el nom de la plantació a la que vol modificar l'any ->");
 				String nom = teclado.nextLine();
 				System.out.println("Introdueixi el nou any ->");
-				teclado = new Scanner(System.in);
+				
 				int nouAny = teclado.nextInt();
-				llistaPlantacions = leerPlantaciones();
-				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
-					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nom))
-						llistaPlantacions.consultatIessim(i).setAnyPlantacio(nouAny);
+			
+				for (int i = 0; llistaPlantacions.consultatIessim(i) != null&&!found; i++) {
+					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nom)) {
+						llistaPlantacions.consultatIessim(i).setAnyPlantacio(nouAny);found=true;}
 					else
 						System.out.println("No s'ha trobat la plantació.");
 				}
 				break;
 			case 11:
+				teclado = new Scanner(System.in);
 				System.out.println("Introdueixi el nom de la plantació a la que vol modificar el rodal ->");
-				teclado = new Scanner(System.in);
 				String nomPlantacio = teclado.nextLine();
+				System.out.println("Introdueix l'índex del rodal que vol eliminar");
+				int j=teclado.nextInt();
 				System.out.println("Introdueixi la superfície que vol que tingui el seu rodal ->");
-				teclado = new Scanner(System.in);
 				float superficie = teclado.nextFloat();
-				llistaPlantacions = leerPlantaciones();
 				System.out.println("Introdueixi el tipus de terreny que vol que tingui el seu rodal ->");
-				teclado = new Scanner(System.in);
 				String tipusTerreny = teclado.next();
+				System.out.println("Introdueix un nom de planta per a assignar al terreny");
+				String planta=teclado.next();
+				System.out.println("Introdueix la quantitat de plantes que vol afegir al terreny");
+				int units=teclado.nextInt();
 				llistaPlantacions = leerPlantaciones();
 				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
-					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nomPlantacio))
-						llistaPlantacions.consultatIessim(i).setSuperficie(i, superficie);
-						llistaPlantacions.consultatIessim(i).getTipusRodal(i).setTerreny(null);
+					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nomPlantacio)) {
+						llistaPlantacions.consultatIessim(i).setSuperficie(j, superficie);
+						llistaPlantacions.consultatIessim(i).getTipusRodal(j).setTerreny(new Terreny(tipusTerreny,planta,units));
+					}
 					else
 						System.out.println("No s'ha trobat la plantació.");
 				}
