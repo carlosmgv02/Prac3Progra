@@ -16,10 +16,10 @@ import javax.swing.event.AncestorListener;
 
 public class Interficie extends JFrame {
 //Funciona? 
-	
 	JPanel panel = new JPanel();
 	JLabel info = new JLabel();
 	JTextArea entradaTeclat = new JTextArea();
+	JTextArea entradaAccio = new JTextArea();
 	private int opcio = 0;
 	public Interficie() {
 		
@@ -66,11 +66,15 @@ public class Interficie extends JFrame {
 		panel.add(info);
 		
 		/////////////////////////////////////////////////
-		
 		entradaTeclat.setBounds(0, 350, 300, 100);
 		entradaTeclat.setText("Borra aquest text i escri uaqui el que es demani");
 		entradaTeclat.setEditable(true);
 		panel.add(entradaTeclat);
+		/////////////////////////////////////////////////
+		entradaAccio.setBounds(0, 30, 300, 50);
+		entradaAccio.setText("Introdueix el nombre corresponent a la funcio");
+		entradaAccio.setEditable(true);
+		panel.add(entradaAccio);
 	}
 	
 	
@@ -127,14 +131,43 @@ public class Interficie extends JFrame {
 		
 
 		JButton botoAccio = new JButton();
-		botoAccio.setBounds (310,20, 90, 40);
+		botoAccio.setBounds (0,100, 90, 40);
 		botoAccio.setText("Establir acció");
 		botoAccio.setEnabled(true);
 		panel.add(botoAccio);
+		ActionListener oyentdeDeAccio = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				if(esNumero(entradaAccio.getText())) {
+					if(Double.parseDouble(entradaAccio.getText()) <1 ||Double.parseDouble(entradaAccio.getText()) >15) {
+						JOptionPane.showMessageDialog(null, "Has de posar un nombre indicat a les opcions, si no saps quines sons, fes click al boto");
+					}else {
+						opcio = (int) Double.parseDouble(entradaAccio.getText());
+						JOptionPane.showMessageDialog(null, "Accio "+ opcio);
+						
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Has de posar un nombre");
+				}
+				
+			}
+		};
+		botoAccio.addActionListener(oyentdeDeAccio);
 	}
 	
 	public int getOpcio() {
+		System.out.println(opcio);
 		return opcio;
+		
 	}
+	
+	public static boolean esNumero(String str) { 
+		  try {  
+		    Double.parseDouble(str);  
+		    return true;
+		  } catch(NumberFormatException e){  
+		    return false;  
+		  }  
+		}
 } 
  
