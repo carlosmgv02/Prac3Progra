@@ -1,8 +1,11 @@
 package InterficieGrafica;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +16,7 @@ public class Interficie extends JFrame {
 	
 	JPanel panel = new JPanel();
 	JLabel etiqueta = new JLabel();
+	JPanel fondo = new JPanel();
 	public Interficie() {
 		
 		//Establir tamany de pantalla
@@ -20,7 +24,8 @@ public class Interficie extends JFrame {
 		//Li donem un nom a la finestra
 		setTitle("Prac 3");
 		
-	
+		//FONDO
+		
 		
 		//Fem que la finestra aparegui a un lloc determinat
 		//setLocation(100,200);
@@ -31,7 +36,9 @@ public class Interficie extends JFrame {
 		//Posem la fienstra al centre de la pantalla
 		setLocationRelativeTo(null);
 		
-
+		JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
+		fondo.setBounds(0, 0, 500, 500);
+		panel.add(fondo);
 		
 		iniciarComponents();
 		
@@ -87,6 +94,8 @@ public class Interficie extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				etiqueta.setText("jkashdfkjadfs");
+				etiqueta.setOpaque(true);
+				etiqueta.setForeground(Color.yellow);
 			}
 		};
 		
