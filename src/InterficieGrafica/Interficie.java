@@ -9,14 +9,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.event.AncestorListener;
 
 public class Interficie extends JFrame {
 //Funciona? 
 	
 	JPanel panel = new JPanel();
-	JLabel etiqueta = new JLabel();
-	JPanel fondo = new JPanel();
+	JLabel info = new JLabel();
+	JTextArea entradaTeclat = new JTextArea();
+	private int opcio = 0;
 	public Interficie() {
 		
 		//Establir tamany de pantalla
@@ -24,82 +28,113 @@ public class Interficie extends JFrame {
 		//Li donem un nom a la finestra
 		setTitle("Prac 3");
 		
-		//FONDO
-		
-		
-		//Fem que la finestra aparegui a un lloc determinat
-		//setLocation(100,200);
-		
-		//Establim un tamany i una posicio de la finestra, (x, y,ampadax, llargaday)
-		//setBounds(100, 200, 500, 500);
-		
 		//Posem la fienstra al centre de la pantalla
 		setLocationRelativeTo(null);
 		
 		JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
 		fondo.setBounds(0, 0, 500, 500);
+		
 		panel.add(fondo);
 		
 		iniciarComponents();
 		
+		//Afegir el panel que acabem de crear
+		this.getContentPane().add(panel);
+		
+		//Desactivem el diseny per a poder posar les coses on vulguem
+		panel.setLayout(null);
 		//Quan tanquis la finestra finalitza TOT el programa
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	private void iniciarComponents() {
+
+		
 		colocarPanels();
 		colocarBotons();
 	}
 	
 	private void colocarPanels() {
+		JLabel etiqueta = new JLabel();
+		JPanel fondo = new JPanel();
 		
-		//Afegir el panel que acabem de crear
-		this.getContentPane().add(panel);
+		//Espai per a posar la etiqueta que mostrará info
+		info.setBounds(0, 0, 500, 20);
+		info.setBackground(Color.black);
+		info.setOpaque(true);
+		info.setText("Practica 3 feta per Carlos, Genís i Joan");
+		panel.add(info);
 		
-		//Desactivem el diseny per a poder posar la etiqueta on vulguem
-		panel.setLayout(null);
+		/////////////////////////////////////////////////
 		
-		//Crear una etiqueta de text
-		//JLabel etiqueta = new JLabel();
-		
-		//Establim el text de la etiqueta
-		etiqueta.setText("Hola");
-		
-		//Modificar la posicio de la etiqueta i el tamany (x, y,ampadax, llargaday)
-		etiqueta.setBounds(100, 100, 50, 30);
-		
-		//Agregar la etiqueta
-		panel.add(etiqueta);
+		entradaTeclat.setBounds(0, 350, 300, 100);
+		entradaTeclat.setText("Borra aquest text i escri uaqui el que es demani");
+		entradaTeclat.setEditable(true);
+		panel.add(entradaTeclat);
 	}
 	
 	
 	private void colocarBotons() {
-		//Creem un boto 
-		JButton boto1 = new JButton();
 		
 		
-		//Li donem posici oi tamany (x, y,ampadax, llargaday)
-		boto1.setBounds (100, 130, 100, 40);
+		//Crear boto per a sortir
+		JButton botoExit = new JButton();
+		botoExit.setBounds (400,20, 90, 40);
+		botoExit.setText("Exit");
+		botoExit.setEnabled(true);
+		panel.add(botoExit);
 		
-		//Posem un text al boto
-		boto1.setText("click");
-		
-		//Activar o desactivar el boto
-		boto1.setEnabled(true);
-		
-		//Afegim el boto
-		panel.add(boto1);
-		
-		ActionListener oyendeDeAccion = new ActionListener() {
+		ActionListener oyentdeDeExit = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				etiqueta.setText("jkashdfkjadfs");
-				etiqueta.setOpaque(true);
-				etiqueta.setForeground(Color.yellow);
+				System.exit(0);
 			}
 		};
+		botoExit.addActionListener(oyentdeDeExit);
 		
-		boto1.addActionListener(oyendeDeAccion);
+		//Crear boto per a mostrar que fa cada cosa
+		JButton botoInfo = new JButton();
+		botoInfo.setBounds (310,20, 90, 40);
+		botoInfo.setText("Info");
+		botoInfo.setEnabled(true);
+		panel.add(botoInfo);
+		
+		ActionListener oyentdeDeInfo = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				JOptionPane.showMessageDialog(null, "1. Carregar les dades dels fitxers.\n"
+						+ "2. Llistar les dades de tots els tipus de terreny.\n"
+						+ "3. Llistar les dades de totes les plantacions.\n"
+						+ "4. Llistar les dades de les plantacions que tenen algun rodal d’un tipus de terreny.\n"
+						+ "5. Donada una plantació, mostrar quantes unitats de cada espècie s’hi ha plantat.\n"
+						+ "6. Llistar les dades de totes les espècies.\n"
+						+ "7. Donada una espècie i una edat, mostrar la quantitat de CO2 que permet absorbir.\n"
+						+ "8. Afegir una nova espècie de planta.\n"
+						+ "9. Esborrar les dades d’una plantació.\n"
+						+ "10. Modificar l’any de plantació d’una plantació.\n"
+						+ "11. Modificar les dades d’un rodal d’una plantació.\n"
+						+ "12. Modificar l’any en què ens trobem. \n"
+						+ "13. Mostrar la quantitat de CO2 que permet absorbir cada rodal d’una plantació en l’any actual.\n"
+						+ "14. Mostrar la quantitat de CO2 que permet absorbir el conjunt d’unitats plantades d’una espècie.\n"
+						+ "15. Sortir. Permetre sortir guardant la informació de les classes als fitxers o no.\n"
+						);
+			}
+		};
+		botoInfo.addActionListener(oyentdeDeInfo);
+		
+		
+		//Boto per a posar una opció
+		
+
+		JButton botoAccio = new JButton();
+		botoAccio.setBounds (310,20, 90, 40);
+		botoAccio.setText("Establir acció");
+		botoAccio.setEnabled(true);
+		panel.add(botoAccio);
+	}
+	
+	public int getOpcio() {
+		return opcio;
 	}
 } 
  
