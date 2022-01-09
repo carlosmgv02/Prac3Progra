@@ -70,7 +70,7 @@ public class Plantacions {
 		int nEl=0;
 		int i=0;
 		for( i=0;rodal[i]!=null;i++) {
-			if(rodal[i].getTerreny().getiNom(i).equalsIgnoreCase(terreny)) {
+			if(rodal[i].getTerreny().getNomTerreny().equalsIgnoreCase(terreny)) {
 				return true;
 			}
 		}
@@ -81,7 +81,7 @@ public class Plantacions {
 		String devolver=new String();
 		for(int i=0;i<rodal.length&&rodal[i]!=null;i++) {
 			
-				devolver=devolver + "\t\tany= "+any+", "+rodal[i]+"";
+				devolver=devolver + "\t\tany= "+any+", "+"Rodal "+i+rodal[i]+"";
 		}
 		devolver="Plantacions [ "+nomPlantacio+"] \n"+ devolver+"\n";
 		//return "Plantacions ["+nomPlantacio+ ", any=" + any + ", rodal=" + Arrays.toString(rodal)  + "]";

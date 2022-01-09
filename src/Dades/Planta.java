@@ -37,7 +37,7 @@ public class Planta<E> {
 
 	@Override
 	public String toString() {
-		return "Planta [nomCient=" + nomCient + ", type=" + type + ",  " + abs + "]\n";
+		return "Planta [nomCient=" + nomCient + ", type=" + type + ",  " + abs + "]";
 	}
 	
 	

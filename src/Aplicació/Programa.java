@@ -13,15 +13,14 @@ public class Programa {
 
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
-		
+		/*
 		LlistaGeneric<Terreny>terr=CFitx.leerTerreno();
 		LlistaGeneric<Plantacions>planta=CFitx.leerPlantaciones();
-		
 		//System.out.println(terr.consultatIessim(0).getiNom(4));
 		LlistaGeneric<Arbustiva>arbustos=CFitx.leerArbustos();
-		//LlistaGeneric<Plantacions>plant=leerPlantaciones();
+		LlistaGeneric<Plantacions>plantas=CFitx.leerPlantaciones();
 		LlistaGeneric<Arboria>plant=CFitx.leerArboles();
-		System.out.println(plant);
+		*/
 		
 		mostrarMenu();
 	}
@@ -31,12 +30,12 @@ public class Programa {
 	
 
 	public static void mostrarMenu() throws FileNotFoundException, OutOfRangeException {
-
+		teclado=new Scanner(System.in);
+		System.out.println("Introdueix l'any actual");
+		//int any=teclado.nextInt();
 		boolean leave = false;
 		do {
-			teclado=new Scanner(System.in);
-			System.out.println("Introdueix l'any actual");
-			int any=teclado.nextInt();
+			
 			System.out.println("Benvingut al programa, escolleix la opció que vols executar");
 			System.out.println("1- Carregar les dades dels fitxers");
 			System.out.println("2- Llistar les dades de tots els tipus de terrenys");
@@ -69,6 +68,8 @@ public class Programa {
 				break;
 			case 2:
 				
+				/*System.out.println(llistaPlantacions.consultatIessim(0));
+				System.out.println(llistaPlantacions.consultatIessim(1));*/
 				System.out.println(llistaTerreno);
 
 				break;
@@ -78,8 +79,10 @@ public class Programa {
 
 				break;
 			case 4:
+				teclado=new Scanner(System.in);
 				System.out.println("Introdueixi el nom del terreny ->");
-				String terreny = teclado.nextLine();
+				String terreny = new String();
+						terreny=teclado.nextLine();
 				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
 
 					if (llistaPlantacions.consultatIessim(i).hasTipusTerreny(terreny)) {
@@ -96,7 +99,7 @@ public class Programa {
 
 				for(int j=0;j<llistaPlantacions.consultatIessim(num).getNelems();j++)
 					System.out.println("Terreny: "+llistaPlantacions.consultatIessim(num).getTipusTerreny(j).getNomTerreny()+
-							", plantació "+(num+1)+", rodal "+(j)+": \n"
+							", plantació "+(num+1)+", rodal "+(j)+", superfície: "+llistaPlantacions.consultatIessim(num).getSuperficie(j)+": \n"
 							+llistaPlantacions.consultatIessim(num).getTipusRodal(j).getTerreny().getUnitats());
 
 				break;

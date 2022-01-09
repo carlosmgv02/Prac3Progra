@@ -5,7 +5,7 @@ import Exceptions.OutOfRangeException;
 public class Terreny<E>  {
 	private String nomTerreny ;
 	private LlistaGeneric<Integer>unitats;
-		
+	private float superf=0;
 	private LlistaGeneric<E>nomPlanta;
 	private LlistaGeneric<Arboria>arbol;
 	private int nElems;
@@ -30,12 +30,15 @@ public class Terreny<E>  {
 	public String getUnitats(){
 		String text=new String();
 		for(int i=0;unitats.consultatIessim(i)!=null;i++) {
-			text=text+"La planta "+nomPlanta.consultatIessim(i)+" té "+unitats.consultatIessim(i)+" unitats\n";
+			text=text+"La planta "+getiNom(i)+" té "+unitats.consultatIessim(i)+" unitats\n";
 		}
 		return text;
 	}
 	public int getNelems() {
 		return nElems;
+	}
+	public void setSup(float sup) {
+		superf=sup;
 	}
 	public String getiNom(int i) {
 		String text=null;
@@ -80,7 +83,10 @@ public class Terreny<E>  {
 			devolver=devolver+"\t\tNom planta = "+nomPlanta.consultatIessim(i)+", unitats = "+unitats.consultatIessim(i)+"\n";
 		}
 		//return "Terreny =" + nomTerreny + "\n\tunitats=" + unitats + "\tnomPlanta=" + nomPlanta ;
-		return "Terreny = " + nomTerreny +"\n"+ devolver +"\n";
+		if(superf!=0)
+			return "Terreny = " + nomTerreny +", Superfície= "+superf+"]\n"+ devolver +"";
+		else
+			return "Terreny = " + nomTerreny +"\n"+ devolver +"";
 	}
 	
 	

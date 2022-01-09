@@ -6,6 +6,7 @@ public class Rodals {
 	public Rodals (Terreny terreny,float superficie) {
 		this.terreny=terreny;
 		this.superficie=superficie;
+		terreny.setSup(superficie);
 	}
 	public Terreny getTerreny() {
 		return terreny;
@@ -21,7 +22,7 @@ public class Rodals {
 	}
 	@Override
 	public String toString() {
-		return "Rodal[ terreny=" + terreny + ", superficie=" + superficie + "]\n";
+		return "[ " + terreny + "\n";
 	}
 	
 
