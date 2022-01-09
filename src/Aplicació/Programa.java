@@ -15,30 +15,11 @@ public class Programa {
 		// TODO Auto-generated method stub
 
 		//LlistaGeneric<Plantacions>plant=leerPlantaciones();
-
-
-
-		//plants.consultatIessim(0).getTipusRodal(0).getTerreny()
-		/*System.out.println("Introdueixi l'any en que es troba.");
-		teclado = new Scanner(System.in);
-		int anyActual = teclado.nextInt();*/
+		LlistaGeneric<Arboria>plant=leerArboles();
+		System.out.println(plant);
+		
+		System.out.println(plant.consultatIessim(0).getAbsorció());
 		mostrarMenu();
-
-		/*
-		 * teclado=new Scanner(new File("src/Terreny.csv")); LlistaGeneric
-		 * <Terreny>prova=leerTerreno(); leerPlantaciones();
-		 * 
-		 * System.out.println(leerPlantaciones()); //System.out.println(prova); Planta
-		 * one=new Planta("1",1); LlistaGeneric <Plantacions> plantacio;
-		 */
-
-
-
-
-
-
-
-
 	}
 	
 
@@ -113,7 +94,24 @@ public class Programa {
 			}
 		}
 		return terreno;
-
+	}
+	public static LlistaGeneric<Arboria>leerArboles() throws FileNotFoundException, OutOfRangeException{
+		LlistaGeneric<Arboria>arbres=new LlistaGeneric<Arboria>(7);
+		Arboria arbol=null;
+		teclado=new Scanner(new File("src/Arbres.csv"));
+		teclado.nextLine();
+		String[]split=null;
+		while(teclado.hasNextLine()) {
+			split=teclado.nextLine().split(";");
+			if(split[5].isBlank()) {
+				split[5]=null;
+				split[6]="0";
+			}
+			arbol=new Arboria(split[0],1,new Absorció(split[1],Float.parseFloat(split[2]),
+					split[3],Float.parseFloat(split[4]),split[5],Float.parseFloat(split[6])));
+			arbres.afegir(arbol);
+		}
+		return arbres;
 	}
 
 	public static void mostrarMenu() throws FileNotFoundException, OutOfRangeException {
@@ -267,9 +265,4 @@ public class Programa {
 
 		return num;
 	}
-
-	public static <E> void imprimir(E valors) {
-		System.out.println(valors);
-	}
-
 }

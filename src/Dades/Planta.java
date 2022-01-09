@@ -1,13 +1,15 @@
 package Dades;
 
-public class Planta {
+public class Planta<E> {
 	private String nomCient;
 	private int type;
+	private E abs;
 	
-	public Planta(String name, int type) {
+	public Planta(String name, int type,E absorcio) {
 		this.nomCient = name;
 		nomCient=name;
 		this.type=type;
+		abs=absorcio;
 	}
 	
 	public String getNomCient() {
@@ -22,9 +24,14 @@ public class Planta {
 	public void setType(int type) {
 		this.type = type;
 	}
+	public E getAbsorció() {
+		return abs;
+	}
+
 	@Override
 	public String toString() {
-		return "Planta [nomCient=" + nomCient + ", type=" + type +  "]";
+		return "Planta [nomCient=" + nomCient + ", type=" + type + ",  " + abs + "]\n";
 	}
+	
 	
 }

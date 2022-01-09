@@ -67,7 +67,7 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 			
 			devolver=devolver+llista[i];
 			if(i<llista.length-1&&first)
-				devolver=devolver+",";
+				//devolver=devolver+",";
 			first=true;
 		}
 		devolver=devolver+"\n";
