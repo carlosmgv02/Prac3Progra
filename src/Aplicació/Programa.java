@@ -13,6 +13,8 @@ public class Programa {
 
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
+		LlistaGeneric<Terreny>terr=CFitx.leerTerreno();
+		Absorció abs=new Absorció("7-8",1,"9-10",2,"1->",3);
 		LlistaGeneric<Arbustiva>arbustos=CFitx.leerArbustos();
 		//LlistaGeneric<Plantacions>plant=leerPlantaciones();
 		LlistaGeneric<Arboria>plant=CFitx.leerArboles();

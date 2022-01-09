@@ -11,6 +11,11 @@ public class Planta<E> {
 		this.type=type;
 		abs=absorcio;
 	}
+	public Planta() {
+		nomCient=null;
+		type=0;
+		abs=null;
+	}
 	
 	public String getNomCient() {
 		return nomCient;
@@ -26,7 +31,9 @@ public class Planta<E> {
 	}
 	public E getAbsorció() {
 		return abs;
+		
 	}
+	
 
 	@Override
 	public String toString() {

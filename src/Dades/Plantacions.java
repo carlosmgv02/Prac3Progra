@@ -14,6 +14,7 @@ public class Plantacions {
 		this.rodal=new Rodals[10];
 		this.rodal[0]=rodals;
 		nElems=1;
+		
 	}
 	public void deleteAll() {
 		any=0;

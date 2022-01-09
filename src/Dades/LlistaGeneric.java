@@ -57,7 +57,7 @@ public class LlistaGeneric<E> implements DefGeneric<E> {
 		if (i < llista.length && llista[i] == null)
 			llista[i] = object;
 	}
-	 
+	
 
 	@Override
 	public String toString() {

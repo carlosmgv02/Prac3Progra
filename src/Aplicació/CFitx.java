@@ -59,6 +59,9 @@ public class CFitx {
 			throws FileNotFoundException, NumberFormatException, OutOfRangeException {
 		int nLines = 10;
 		LlistaGeneric<Terreny> terreno = new LlistaGeneric<Terreny>(2);
+		LlistaGeneric<Arbustiva>arbusto=leerArbustos();
+		LlistaGeneric<Arboria>arbol=leerArboles();
+		
 		teclado = new Scanner(new File("src/Terreny.csv"));
 		teclado.nextLine();
 		String[] split = null;
@@ -70,14 +73,41 @@ public class CFitx {
 
 		boolean first = false;
 		int i = 0;
+		int arb=0,arbus=0;
+		/*
+		 * split[0]=Nom terreny
+		 * split[1]=Nom planta
+		 * split[2]=Unitats plantades
+		 */
 		for (i = 0; i < nLines; i++) {
-			split = teclado.nextLine().split(";");
+			split = teclado.nextLine().split(";");	//separamos string
+			arb=containsArbol(arbol,split[1]);
+			arbus=containsArbust(arbusto,split[1]);
 			if (!split[0].equalsIgnoreCase("/")) {
-				ter = new Terreny(split[0], split[1], Integer.parseInt(split[2]));
+				
+				
+				if(arb!=-1) {
+					ter = new Terreny(split[0], arbol.consultatIessim(arb), 
+							Integer.parseInt(split[2]));
+				}
+				else { if(arbus!=-1) {
+					 
+					ter=new Terreny(split[0],arbusto.consultatIessim(arbus),
+							Integer.parseInt(split[2]));
+				}
+				else ter=new Terreny(split[0],new Planta(),Integer.parseInt(split[2]));
+				
+				}
+				
 				first = true;
 			}
 			if (!first) {
-				ter.afegirPlanta(split[1], Integer.parseInt(split[2]));
+				if(arb!=-1)
+				ter.afegirPlanta(arbol.consultatIessim(arb), Integer.parseInt(split[2]));
+				else {if(arbus!=-1)
+					ter.afegirPlanta(arbusto.consultatIessim(arbus), Integer.parseInt(split[2]));
+				else ter.afegirPlanta(new Planta(), arbus);
+				}
 			}
 			first = false;
 			if (i == 4 || i == 9) {
@@ -118,5 +148,21 @@ public class CFitx {
 		}
 		return arbustos;
 	}
+	public static int containsArbol(LlistaGeneric<Arboria>texto,String text) {
+		
+		for(int i=0;i<texto.length();i++) {
+			if(texto.consultatIessim(i).getNomCient().equalsIgnoreCase(text))
+				return i;
+		}
+		return -1;
+	}
+	public static int containsArbust(LlistaGeneric<Arbustiva>arbust,String text) {
+		for(int i=0;i<arbust.length();i++) {
+			if(arbust.consultatIessim(i).getNomCient().equalsIgnoreCase(text))
+				return i;
+		}
+		return -1;
+	}
+	
 
 }

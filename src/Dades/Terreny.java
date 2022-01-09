@@ -2,25 +2,26 @@ package Dades;
 
 import Exceptions.OutOfRangeException;
 
-public class Terreny  {
+public class Terreny<E>  {
 	private String nomTerreny ;
 	private LlistaGeneric<Integer>unitats;
 		
-	private LlistaGeneric<String>nomPlanta;
+	private LlistaGeneric<E>nomPlanta;
+	private LlistaGeneric<Arboria>arbol;
 	
 	private int nElems;
-	public Terreny (String nomTerreny,  String nomPlanta,int unitats) throws OutOfRangeException{
+	public Terreny (String nomTerreny,  E nomPlanta,int unitats) throws OutOfRangeException{
 		this.nomTerreny=nomTerreny;
 		/*this.nomPlanta=new String[5];
 		/this.nomPlanta[0]=nomPlanta;*/
 		this.unitats=new LlistaGeneric<Integer>(10);
-		this.nomPlanta=new LlistaGeneric<String>(10);
+		this.nomPlanta=new LlistaGeneric<E>(10);
 		this.nomPlanta.afegir(nomPlanta);
 		this.unitats.afegir(unitats);
 		nElems=1;
 	}
 	 
-	public void afegirPlanta(String nom,int unitats) throws OutOfRangeException {
+	public void afegirPlanta(E nom,int unitats) throws OutOfRangeException {
 		this.nomPlanta.afegir(nom);
 		this.unitats.afegir(unitats);
 	}
@@ -33,12 +34,12 @@ public class Terreny  {
 	}
 	public String getiNom(int i) {
 		if(i<nomPlanta.length())
-			return nomPlanta.consultatIessim(i);
+			return nomPlanta.consultatIessim(i).getNomCient();
 		else return null;
 	}
 	public void setiNom(String nom, int i) {
 		if(i<nomPlanta.length()&&!nom.isEmpty())
-			this.nomPlanta.setIessim(i, nom); 
+			this.nomPlanta.consultatIessim(i).setNomCient(nom);
 	}
 	
 
