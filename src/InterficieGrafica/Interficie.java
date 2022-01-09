@@ -16,10 +16,21 @@ import javax.swing.event.AncestorListener;
 
 public class Interficie extends JFrame {
 //Funciona? 
+	private String colorPedres = "black";
+	private String colorTrossos = "black";
+	private int anyActual = 0;
+	
 	JPanel panel = new JPanel();
 	JLabel info = new JLabel();
-	JTextArea entradaTeclat = new JTextArea();
-	JTextArea entradaAccio = new JTextArea();
+	JTextArea entradaAny = new JTextArea();
+	
+	
+	JLabel negre = new JLabel();
+	JLabel lila = new JLabel();
+	JLabel roig = new JLabel();
+	JLabel blau = new JLabel();
+	JLabel verd = new JLabel();
+	
 	private int opcio = 0;
 	public Interficie() {
 		
@@ -45,6 +56,8 @@ public class Interficie extends JFrame {
 		panel.setLayout(null);
 		//Quan tanquis la finestra finalitza TOT el programa
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+
 	}
 	
 	private void iniciarComponents() {
@@ -65,16 +78,38 @@ public class Interficie extends JFrame {
 		info.setText("Practica 3 feta per Carlos, Genís i Joan");
 		panel.add(info);
 		
+		panel.add(entradaAny);
 		/////////////////////////////////////////////////
-		entradaTeclat.setBounds(0, 350, 300, 100);
-		entradaTeclat.setText("Borra aquest text i escriu aqui el que es demani");
-		entradaTeclat.setEditable(true);
-		panel.add(entradaTeclat);
+		negre.setBackground(Color.black);
+		negre.setBounds(0, 400, 10, 10);
+		negre.setOpaque(true);
+		panel.add(negre);
+		lila.setBackground(Color.magenta);
+		lila.setBounds(10, 400, 10, 10);
+		lila.setOpaque(true);
+		panel.add(lila);
+		roig.setBounds(20, 400, 10, 10);
+		roig.setBackground(Color.red);
+		roig.setOpaque(true);
+		panel.add(roig);
+		blau.setBackground(Color.blue);
+		blau.setBounds(30, 400, 10, 10);
+		blau.setOpaque(true);
+		panel.add(blau);
+		verd.setBackground(Color.green);
+		verd.setBounds(40, 400, 10, 10);
+		verd.setOpaque(true);
+		panel.add(verd);
+
 		/////////////////////////////////////////////////
-		entradaAccio.setBounds(0, 30, 300, 50);
-		entradaAccio.setText("Introdueix el nombre corresponent a la funcio");
-		entradaAccio.setEditable(true);
-		panel.add(entradaAccio);
+		entradaAny.setBounds(0, 30, 300, 50);
+		
+		entradaAny.setEditable(false);
+		
+		JLabel llegenda = new JLabel();
+		llegenda.setBounds(0, 420, 300, 50);
+		llegenda.setText("Negre->50, Lila->150, Blau->250, Verd->400");
+		panel.add(llegenda);
 	}
 	
 	
@@ -97,11 +132,11 @@ public class Interficie extends JFrame {
 		botoExit.addActionListener(oyentdeDeExit);
 		
 		//Crear boto per a mostrar que fa cada cosa
-		JButton botoInfo = new JButton();
-		botoInfo.setBounds (310,20, 90, 40);
-		botoInfo.setText("Info");
-		botoInfo.setEnabled(true);
-		panel.add(botoInfo);
+		JButton botopedres = new JButton();
+		botopedres.setBounds (0,100, 400, 40);
+		botopedres.setText("Finca les pedres, 2018, 4 rodals, 6381 arbres, 340 arbustives");
+		botopedres.setEnabled(true);
+		panel.add(botopedres);
 		
 		ActionListener oyentdeDeInfo = new ActionListener() {
 			@Override
@@ -124,25 +159,25 @@ public class Interficie extends JFrame {
 						);
 			}
 		};
-		botoInfo.addActionListener(oyentdeDeInfo);
+		botopedres.addActionListener(oyentdeDeInfo);
 		
 		
 		//Boto per a posar una opció
 		
 
-		JButton botoAccio = new JButton();
-		botoAccio.setBounds (0,100, 90, 40);
-		botoAccio.setText("Establir acció");
-		botoAccio.setEnabled(true);
-		panel.add(botoAccio);
+		JButton botoTros = new JButton();
+		botoTros.setBounds (0,140, 400, 40);
+		botoTros.setText("Finca els trossos, 2015, 7 rodals, 5 arbres, 0 arbustives");
+		botoTros.setEnabled(true);
+		panel.add(botoTros);
 		ActionListener oyentdeDeAccio = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				if(esNumero(entradaAccio.getText())) {
-					if(Double.parseDouble(entradaAccio.getText()) <1 ||Double.parseDouble(entradaAccio.getText()) >15) {
+				if(esNumero(entradaAny.getText())) {
+					if(Double.parseDouble(entradaAny.getText()) <1 ||Double.parseDouble(entradaAny.getText()) >15) {
 						JOptionPane.showMessageDialog(null, "Has de posar un nombre indicat a les opcions, si no saps quines sons, fes click al boto");
 					}else {
-						opcio = (int) Double.parseDouble(entradaAccio.getText());
+						opcio = (int) Double.parseDouble(entradaAny.getText());
 						JOptionPane.showMessageDialog(null, "Accio "+ opcio);
 						
 					}
@@ -152,7 +187,7 @@ public class Interficie extends JFrame {
 				
 			}
 		};
-		botoAccio.addActionListener(oyentdeDeAccio);
+		botoTros.addActionListener(oyentdeDeAccio);
 	}
 	
 	public int getOpcio() {
@@ -169,5 +204,25 @@ public class Interficie extends JFrame {
 		    return false;  
 		  }  
 		}
+
+	public void setColorPedres(String colorPedres) {
+		this.colorPedres = colorPedres;
+	}
+
+	public void setColorTrossos(String colorTrossos) {
+		this.colorTrossos = colorTrossos;
+	}
+	public String getColorPedres() {
+		return colorPedres;
+	}
+
+	public String getColorTrossos() {
+		return colorTrossos;
+	}
+	
+	public void setanyActual(int anyActual) {
+		this.anyActual = anyActual;
+		entradaAny.setText("Ara estas a l'any "+anyActual);
+	}
+	
 } 
- 
