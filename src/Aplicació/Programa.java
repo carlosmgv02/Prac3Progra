@@ -58,6 +58,8 @@ public class Programa {
 			switch (getMenuOption()) {
 			case 1:
 				
+				System.out.println("Les dades s'han carregat correctament.");
+				
 				break;
 			case 2:
 				
@@ -66,16 +68,19 @@ public class Programa {
 				break;
 			case 3:
 				
-				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
-
-					if (llistaPlantacions.consultatIessim(i).hasTipusTerreny("CalcariSolana")) {
-						System.out.println("La finca " + i + " si que el conté");
-					} else
-						System.out.println("La finca " + i + " no el conté");
-				}
+				System.out.println(llistaPlantacions);
 
 				break;
 			case 4:
+				System.out.println("Introdueixi el nom del terreny ->");
+				String terreny = teclado.nextLine();
+				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
+
+					if (llistaPlantacions.consultatIessim(i).hasTipusTerreny(terreny)) {
+						System.out.println(llistaPlantacions.consultatIessim(i));
+					} else
+						System.out.println("No s'ha trobat cap rodal en aquest terreny.");
+				}
 				break;
 			case 5:
 				//LlistaGeneric<Plantacions>llistaPLantacions=leerPlantaciones();
@@ -90,9 +95,18 @@ public class Programa {
 
 				break;
 			case 6:
+				
 				System.out.println(llistaPlantacions);
+				
 				break;
 			case 7:
+				System.out.println("Introdueixi la especie de la planta a consultar (Arbustiva / Arborea) ->");
+				String especie = teclado.nextLine();
+				System.out.println("Introdueixi la edat de la planta a consultar ->");
+				int edat = teclado.nextInt();
+				for (int i=0;llistaPlantacions.consultatIessim(i)!null&&!found;i++) {
+					if(llistaPlantacions.consultatIessim(i).
+				}
 				break;
 			case 8:
 				break;
