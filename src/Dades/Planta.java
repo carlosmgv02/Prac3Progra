@@ -33,6 +33,16 @@ public class Planta<E> {
 		return abs;
 		
 	}
+	public float getAbs(int age) {
+		if(type==2&&age>=5)
+			return (float)abs;
+		else if(type==1) {
+			Absorció absor=(Absorció)abs;
+			return absor.absorc(age);}
+		return 0;
+			
+		
+	}
 	
 
 	@Override

@@ -30,9 +30,38 @@ public class Absorció {
 			tabla[1]=Integer.parseInt(split[1]);
 			
 		}
-		return tabla;
-		
-		
+		return tabla;		
+	}
+	public float absorc(int age) {
+		boolean found=false;
+		int j=0,i=0;
+		if(edades[1][1]!=0){
+		for( j=0;j<absorció.length&&!found;j++) {
+			if(j==2) {
+				if(age>=edades[j][0])
+					return absorció[2];
+			}
+			if(age>edades[j][0]&&age<edades[j][1])
+				return absorció[j];}}
+			else {
+				if(age>edades[0][0]&&age<edades[0][1])
+					return absorció[0];
+				else return absorció[1];
+			}
+					
+		return absorció[j];
+			
+	}
+	public boolean isInRange(int age) {
+		if(edades[1][1]==0) {
+			if(age>=edades[0][0]&&age<edades[1][0])
+				return true;
+		}
+		else {
+			if(age>=edades[0][0]&&age<=edades[2][0])
+				return true;
+		}
+		return false;
 	}
 	@Override
 	public String toString() {

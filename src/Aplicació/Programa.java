@@ -109,22 +109,26 @@ public class Programa {
 				
 				break;
 			case 7:
-				System.out.println("Introdueixi la especie de la planta a consultar (1- Arbustiva / 2- Arborea) ->");
-				int especie = teclado.nextInt();
+				boolean printed=false;
+				
+				System.out.println("Introdueixi la especie de la planta a consultar  ->");
+				String especie = new String();
+				teclado.nextLine();
+						especie=teclado.nextLine();
 				System.out.println("Introdueixi la edat de la planta a consultar ->");
 				int edat = teclado.nextInt();
-				try {
-				for (int i=0;llistaPlantacions.consultatIessim(i)!=null&&!found;i++) {
-					System.out.println("\nPLANTACIÓ: "+llistaPlantacions.consultatIessim(i).getNomPlantacio());
-					for(int j=0;j<2;j++) {
-						System.out.println("RODAL: "+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNomTerreny());
-						for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems();k++) {
-							if(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getType()==especie) {
-								System.out.println("\t"+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient()
-										+" "+ llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbsorció());}}}
-				}}catch(ClassCastException E) {
-					
+				float uno=llistaPlantacions.consultatIessim(0).getTipusTerreny(0).getPlanta(3).getAbs(edat);
+				try{for( int i=0;printed==false;i++) {
+					for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems()&&!printed;j++) {
+						for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems()&&!printed;k++) {
+							if(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient().equalsIgnoreCase(especie)){
+								System.out.println(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbs(edat));
+								printed=true;
+						}}}}
+				}catch(ClassCastException E) {
+					System.out.println("No s'ha trobat l'element buscat");
 				}
+				
 				break;
 			case 8:
 				break;

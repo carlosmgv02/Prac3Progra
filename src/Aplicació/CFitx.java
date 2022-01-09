@@ -132,6 +132,7 @@ public class CFitx {
 			arbol=new Arboria(split[0],1,new Absorció(split[1],Float.parseFloat(split[2]),
 					split[3],Float.parseFloat(split[4]),split[5],Float.parseFloat(split[6])));
 			arbres.afegir(arbol);
+			
 		}
 		return arbres;
 	}

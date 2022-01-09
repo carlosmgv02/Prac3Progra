@@ -67,7 +67,7 @@ public class Interficie extends JFrame {
 		
 		/////////////////////////////////////////////////
 		entradaTeclat.setBounds(0, 350, 300, 100);
-		entradaTeclat.setText("Borra aquest text i escri uaqui el que es demani");
+		entradaTeclat.setText("Borra aquest text i escriu aqui el que es demani");
 		entradaTeclat.setEditable(true);
 		panel.add(entradaTeclat);
 		/////////////////////////////////////////////////

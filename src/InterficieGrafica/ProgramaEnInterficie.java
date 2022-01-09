@@ -10,7 +10,7 @@ public class ProgramaEnInterficie {
 		Interficie Finestra = new Interficie();
 		Finestra.setVisible(true);
 		
-		Programa.leerPlantaciones();
+		
 		
 	}
 
