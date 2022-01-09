@@ -8,7 +8,6 @@ public class Terreny<E>  {
 		
 	private LlistaGeneric<E>nomPlanta;
 	private LlistaGeneric<Arboria>arbol;
-	
 	private int nElems;
 	public Terreny (String nomTerreny,  E nomPlanta,int unitats) throws OutOfRangeException{
 		this.nomTerreny=nomTerreny;
@@ -19,11 +18,14 @@ public class Terreny<E>  {
 		this.nomPlanta.afegir(nomPlanta);
 		this.unitats.afegir(unitats);
 		nElems=1;
+		
+
 	}
 	 
 	public void afegirPlanta(E nom,int unitats) throws OutOfRangeException {
 		this.nomPlanta.afegir(nom);
 		this.unitats.afegir(unitats);
+		nElems++;
 	}
 	public String getUnitats(){
 		String text=new String();
@@ -32,16 +34,40 @@ public class Terreny<E>  {
 		}
 		return text;
 	}
+	public int getNelems() {
+		return nElems;
+	}
 	public String getiNom(int i) {
-		if(i<nomPlanta.length())
-			return nomPlanta.consultatIessim(i).getNomCient();
-		else return null;
+		String text=null;
+			
+			if(nomPlanta.consultatIessim(i).getClass().getSimpleName().equalsIgnoreCase("Arboria")) {
+				Arboria arb=(Arboria)nomPlanta.consultatIessim(i);
+				text=arb.getNomCient();
+			}
+			else if(nomPlanta.consultatIessim(i).getClass().getSimpleName().equalsIgnoreCase("Arbustiva")){
+				Arbustiva arbus=(Arbustiva)nomPlanta.consultatIessim(i);
+				text=arbus.getNomCient();
+			}
+		return text;
+			
+		
 	}
 	public void setiNom(String nom, int i) {
-		if(i<nomPlanta.length()&&!nom.isEmpty())
-			this.nomPlanta.consultatIessim(i).setNomCient(nom);
+		if(i<nomPlanta.length()&&!nom.isEmpty()) {
+			if(nomPlanta.consultatIessim(i).getClass().getSimpleName().equalsIgnoreCase("Arboria")) {
+				Arboria arb=(Arboria)nomPlanta.consultatIessim(i);
+				arb.setNomCient(nom);
+			}
+			else if(nomPlanta.consultatIessim(i).getClass().getSimpleName().equalsIgnoreCase("Arbustiva")) {
+				Arbustiva arbus=(Arbustiva)nomPlanta.consultatIessim(i);
+				arbus.setNomCient(nom);
+			}
+		}			
+			
 	}
-	
+	public Planta getPlanta(int i) {
+		return (Planta)nomPlanta.consultatIessim(i);
+	}
 
 	public String getNomTerreny() {
 		return nomTerreny;

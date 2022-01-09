@@ -13,8 +13,11 @@ public class Programa {
 
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
+		
 		LlistaGeneric<Terreny>terr=CFitx.leerTerreno();
-		Absorció abs=new Absorció("7-8",1,"9-10",2,"1->",3);
+		LlistaGeneric<Plantacions>planta=CFitx.leerPlantaciones();
+		
+		//System.out.println(terr.consultatIessim(0).getiNom(4));
 		LlistaGeneric<Arbustiva>arbustos=CFitx.leerArbustos();
 		//LlistaGeneric<Plantacions>plant=leerPlantaciones();
 		LlistaGeneric<Arboria>plant=CFitx.leerArboles();
@@ -31,6 +34,7 @@ public class Programa {
 
 		boolean leave = false;
 		do {
+			teclado=new Scanner(System.in);
 			System.out.println("Introdueix l'any actual");
 			int any=teclado.nextInt();
 			System.out.println("Benvingut al programa, escolleix la opció que vols executar");
@@ -102,12 +106,21 @@ public class Programa {
 				
 				break;
 			case 7:
-				System.out.println("Introdueixi la especie de la planta a consultar (Arbustiva / Arborea) ->");
-				String especie = teclado.nextLine();
+				System.out.println("Introdueixi la especie de la planta a consultar (1- Arbustiva / 2- Arborea) ->");
+				int especie = teclado.nextInt();
 				System.out.println("Introdueixi la edat de la planta a consultar ->");
 				int edat = teclado.nextInt();
-				for (int i=0;llistaPlantacions.consultatIessim(i)!null&&!found;i++) {
-					if(llistaPlantacions.consultatIessim(i).
+				try {
+				for (int i=0;llistaPlantacions.consultatIessim(i)!=null&&!found;i++) {
+					System.out.println("\nPLANTACIÓ: "+llistaPlantacions.consultatIessim(i).getNomPlantacio());
+					for(int j=0;j<2;j++) {
+						System.out.println("RODAL: "+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNomTerreny());
+						for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems();k++) {
+							if(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getType()==especie) {
+								System.out.println("\t"+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient()
+										+" "+ llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbsorció());}}}
+				}}catch(ClassCastException E) {
+					
 				}
 				break;
 			case 8:
