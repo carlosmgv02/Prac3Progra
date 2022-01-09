@@ -13,111 +13,24 @@ public class Programa {
 
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		// TODO Auto-generated method stub
-
+		LlistaGeneric<Arbustiva>arbustos=CFitx.leerArbustos();
 		//LlistaGeneric<Plantacions>plant=leerPlantaciones();
-		LlistaGeneric<Arboria>plant=leerArboles();
+		LlistaGeneric<Arboria>plant=CFitx.leerArboles();
 		System.out.println(plant);
 		
-		System.out.println(plant.consultatIessim(0).getAbsorció());
 		mostrarMenu();
 	}
 	
+	
 
-	public static LlistaGeneric<Plantacions> leerPlantaciones() throws FileNotFoundException, OutOfRangeException {
-		LlistaGeneric<Terreny>terreno=leerTerreno();
-		int nLines = 12;
-		LlistaGeneric<Plantacions> plantacions = new LlistaGeneric<Plantacions>(2);
-		teclado = new Scanner(new File("src/Plantacions.csv"));
-		
-		String text=teclado.nextLine();
-		String[] split = null;
-		Terreny terreny=null;
-		int i = 0;
-		boolean first = false;
-		Plantacions plant = null;
-		for (i = 0; i < nLines; i++) {
-			split = teclado.nextLine().split(";");
-			if(split[3].equalsIgnoreCase("CalcariSolana")) {
-				terreny=terreno.consultatIessim(0);}
-			else {
-				if(split[3].equalsIgnoreCase("CalcariObaga"))
-					terreny=terreno.consultatIessim(1);
-				else
-					terreny=new Terreny(split[3],"",0);
-			}
-			if (!split[0].equalsIgnoreCase(" ")) {
-
-				plant = new Plantacions(split[0], Integer.parseInt(split[1]),
-						new Rodals(terreny, Float.parseFloat(split[4])));
-				first = true;
-			}
-			if (!first) {
-				plant.setTipusRodal(new Rodals(terreny, Float.parseFloat(split[4])));
-			}
-			first = false;
-			if (i == 4 || i == 11) {
-				plantacions.afegir(plant);
-			}
-
-		}
-		return plantacions;
-	}
-
-	public static LlistaGeneric<Terreny> leerTerreno()
-			throws FileNotFoundException, NumberFormatException, OutOfRangeException {
-		int nLines = 10;
-		LlistaGeneric<Terreny> terreno = new LlistaGeneric<Terreny>(2);
-		teclado = new Scanner(new File("src/Terreny.csv"));
-		teclado.nextLine();
-		String[] split = null;
-
-		/*
-		 * split=teclado.nextLine().split(";"); String nom=split[0];
-		 */
-		Terreny ter = null;
-
-		boolean first = false;
-		int i = 0;
-		for (i = 0; i < nLines; i++) {
-			split = teclado.nextLine().split(";");
-			if (!split[0].equalsIgnoreCase("/")) {
-				ter = new Terreny(split[0], split[1], Integer.parseInt(split[2]));
-				first = true;
-			}
-			if (!first) {
-				ter.afegirPlanta(split[1], Integer.parseInt(split[2]));
-			}
-			first = false;
-			if (i == 4 || i == 9) {
-				terreno.afegir(ter);
-				;
-			}
-		}
-		return terreno;
-	}
-	public static LlistaGeneric<Arboria>leerArboles() throws FileNotFoundException, OutOfRangeException{
-		LlistaGeneric<Arboria>arbres=new LlistaGeneric<Arboria>(7);
-		Arboria arbol=null;
-		teclado=new Scanner(new File("src/Arbres.csv"));
-		teclado.nextLine();
-		String[]split=null;
-		while(teclado.hasNextLine()) {
-			split=teclado.nextLine().split(";");
-			if(split[5].isBlank()) {
-				split[5]=null;
-				split[6]="0";
-			}
-			arbol=new Arboria(split[0],1,new Absorció(split[1],Float.parseFloat(split[2]),
-					split[3],Float.parseFloat(split[4]),split[5],Float.parseFloat(split[6])));
-			arbres.afegir(arbol);
-		}
-		return arbres;
-	}
+	
 
 	public static void mostrarMenu() throws FileNotFoundException, OutOfRangeException {
 
 		boolean leave = false;
 		do {
+			System.out.println("Introdueix l'any actual");
+			int any=teclado.nextInt();
 			System.out.println("Benvingut al programa, escolleix la opció que vols executar");
 			System.out.println("1- Carregar les dades dels fitxers");
 			System.out.println("2- Llistar les dades de tots els tipus de terrenys");
@@ -138,8 +51,8 @@ public class Programa {
 			.println("14- Mostrar la quantitat de CO2 que permet absorbir el conjunt d'unitats plantades d'una"
 					+ " espècie eb l'any actual.");
 			System.out.println("15- Sortir del programa");
-			LlistaGeneric<Plantacions> llistaPlantacions = leerPlantaciones();
-			LlistaGeneric<Terreny> llistaTerreno = leerTerreno();
+			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
+			LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
 			boolean found=false;
 
 			switch (getMenuOption()) {
@@ -225,7 +138,7 @@ public class Programa {
 				String planta=teclado.next();
 				System.out.println("Introdueix la quantitat de plantes que vol afegir al terreny");
 				int units=teclado.nextInt();
-				llistaPlantacions = leerPlantaciones();
+				
 				for (int i = 0; llistaPlantacions.consultatIessim(i) != null; i++) {
 					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nomPlantacio)) {
 						llistaPlantacions.consultatIessim(i).setSuperficie(j, superficie);

@@ -4,8 +4,11 @@ import java.util.Arrays;
 
 public class Absorció {
 	private String []rangsEdats=new String[3];
+	private int []edades;
+	
 	private float[] absorció=new float[3];
 	public Absorció(String uno,float un,String dos,float doss,String tres,float tre) {
+		
 		rangsEdats[0]=uno;
 		rangsEdats[1]=dos;
 		rangsEdats[2]=tres;
@@ -13,7 +16,15 @@ public class Absorció {
 		absorció[1]=doss;
 		absorció[2]=tre;
 	}
-	
+	public int[]separar(String texto){
+		int []tabla;
+		String []split;
+		if(texto.contains("->")) {
+			split=
+		}
+		String []split=texto.split("-");
+		
+	}
 	@Override
 	public String toString() {
 		String retorna=new String();
