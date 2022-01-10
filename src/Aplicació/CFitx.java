@@ -187,9 +187,15 @@ public class CFitx {
 			for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems();j++) {
 				for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems();k++) {
 					int age=any-llistaPlantacions.consultatIessim(i).getAnyPlantacio();
-					total=total+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k)*llistaPlantacions.consultatIessim(i)
+					if(age<0) {age=3;System.out.println("Age was negative, now it's 3");}
+					float absortion=llistaPlantacions.consultatIessim(i)
+							.getTipusTerreny(j).getPlanta(k).getAbs(age);
+					System.out.println(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient());
+					int units=llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k);
+					total=total+units*absortion;
+					/*total=total+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k)*llistaPlantacions.consultatIessim(i)
 							.getTipusTerreny(j).getPlanta(k).getAbs(any-llistaPlantacions.consultatIessim(i)
-									.getAnyPlantacio());
+									.getAnyPlantacio());*/
 				}
 			}
 				
