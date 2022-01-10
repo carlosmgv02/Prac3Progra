@@ -186,8 +186,7 @@ public class CFitx {
 		for(int i=0;i<llistaPlantacions.nElems();i++) {
 			for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems();j++) {
 				for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems();k++) {
-					int age=any-llistaPlantacions.consultatIessim(i)
-							.getAnyPlantacio();
+					int age=any-llistaPlantacions.consultatIessim(i).getAnyPlantacio();
 					total=total+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k)*llistaPlantacions.consultatIessim(i)
 							.getTipusTerreny(j).getPlanta(k).getAbs(any-llistaPlantacions.consultatIessim(i)
 									.getAnyPlantacio());
