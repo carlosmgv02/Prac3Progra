@@ -35,16 +35,17 @@ public class Absorció {
 	public float absorc(int age) {
 		boolean found=false;
 		int j=0,i=0;
+		if(age<edades[0][0])return 0;
 		if(edades[1][1]!=0){
 		for( j=0;j<absorció.length&&!found;j++) {
 			if(j==2) {
 				if(age>=edades[j][0])
 					return absorció[2];
 			}
-			if(age>edades[j][0]&&age<edades[j][1])
+			if(age>=edades[j][0]&&age<edades[j][1])
 				return absorció[j];}}
 			else {
-				if(age>edades[0][0]&&age<edades[0][1])
+				if(age>=edades[0][0]&&age<edades[0][1])
 					return absorció[0];
 				else return absorció[1];
 			}

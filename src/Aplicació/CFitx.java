@@ -184,22 +184,29 @@ public class CFitx {
 	public static float rodalAbsor(LlistaGeneric<Plantacions>llistaPlantacions,String plant,int any) {
 		float total=0;
 		for(int i=0;i<llistaPlantacions.nElems();i++) {
-			for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems();j++) {
+			if(llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(plant))
+			if(any>llistaPlantacions.consultatIessim(i).getAnyPlantacio()) {
+				System.out.println("Plantació "+llistaPlantacions.consultatIessim(i).getNomPlantacio()+": ");
+				for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems();j++) {
+				
+				System.out.println("RODAL "+j+":");
 				for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems();k++) {
 					int age=any-llistaPlantacions.consultatIessim(i).getAnyPlantacio();
-					if(age<0) {age=3;System.out.println("Age was negative, now it's 3");}
+					if(age<0) {age=0;}
 					float absortion=llistaPlantacions.consultatIessim(i)
 							.getTipusTerreny(j).getPlanta(k).getAbs(age);
-					System.out.println(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient());
+					//System.out.println(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient());
 					int units=llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k);
 					total=total+units*absortion;
 					/*total=total+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k)*llistaPlantacions.consultatIessim(i)
 							.getTipusTerreny(j).getPlanta(k).getAbs(any-llistaPlantacions.consultatIessim(i)
 									.getAnyPlantacio());*/
 				}
-			}
+				System.out.println("Absorció total del rodal: "+total);
+				total=0;
 				
 		}
+			}else System.out.println("L'any introduit és anterior a la la plantació "+llistaPlantacions.consultatIessim(i).getNomPlantacio());}
 		return total;
 	}
 

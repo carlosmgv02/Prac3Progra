@@ -72,7 +72,11 @@ public class Terreny<E>  {
 			
 	}
 	public Planta getPlanta(int i) {
+		try {
 		return (Planta)nomPlanta.consultatIessim(i);
+		}catch(ClassCastException E){
+			return new Planta("Invalid",0,0);
+		}
 	}
 
 	public String getNomTerreny() {

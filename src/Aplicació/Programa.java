@@ -33,6 +33,7 @@ public class Programa {
 		teclado=new Scanner(System.in);
 		System.out.println("Introdueix l'any actual");
 		int any=teclado.nextInt();
+		
 		boolean leave = false;
 		do {
 			
@@ -59,7 +60,7 @@ public class Programa {
 			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 			
 			LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
-			CFitx.rodalAbsor(llistaPlantacions, "Finca les pedres", any);
+			
 			boolean found=false;
 
 			switch (getMenuOption()) {
@@ -184,6 +185,10 @@ public class Programa {
 				System.out.println(any);
 				break;
 			case 13:
+				teclado=new Scanner(System.in);
+				System.out.println("Introdueix el nom de la plantació a consultar");
+				String finca=teclado.nextLine();
+				CFitx.rodalAbsor(llistaPlantacions, finca, any);
 				break;
 			case 14:
 				break;
