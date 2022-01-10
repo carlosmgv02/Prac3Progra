@@ -78,7 +78,7 @@ public class Interficie extends JFrame {
 		info.setText("Practica 3 feta per Carlos, Genís i Joan");
 		panel.add(info);
 		
-		panel.add(entradaAny);
+		
 		/////////////////////////////////////////////////
 		negre.setBackground(Color.black);
 		negre.setBounds(0, 400, 10, 10);
@@ -211,6 +211,7 @@ public class Interficie extends JFrame {
 	public void setanyActual(int anyActual) {
 		this.anyActual = anyActual;
 		entradaAny.setText("Ara estas a l'any "+anyActual);
+		panel.add(entradaAny);
 	}
 	
 } 

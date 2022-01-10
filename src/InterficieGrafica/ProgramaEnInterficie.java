@@ -17,6 +17,7 @@ public class ProgramaEnInterficie {
 		Interficie Finestra = new Interficie();
 		//Finestra.setanyActual(llegirAny());0
 		int any = llegirAny();
+		Finestra.setanyActual(any);
 		//System.out.println("tamare"+ );
 		//Fa falta la funcio per a detectar lo interval
 		
