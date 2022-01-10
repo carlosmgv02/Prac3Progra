@@ -32,7 +32,7 @@ public class Programa {
 	public static void mostrarMenu() throws FileNotFoundException, OutOfRangeException {
 		teclado=new Scanner(System.in);
 		System.out.println("Introdueix l'any actual");
-		//int any=teclado.nextInt();
+		int any=teclado.nextInt();
 		boolean leave = false;
 		do {
 			
@@ -57,7 +57,9 @@ public class Programa {
 					+ " espècie eb l'any actual.");
 			System.out.println("15- Sortir del programa");
 			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
+			
 			LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
+			CFitx.rodalAbsor(llistaPlantacions, "Finca les pedres", any);
 			boolean found=false;
 
 			switch (getMenuOption()) {
@@ -117,17 +119,8 @@ public class Programa {
 						especie=teclado.nextLine();
 				System.out.println("Introdueixi la edat de la planta a consultar ->");
 				int edat = teclado.nextInt();
-				float uno=llistaPlantacions.consultatIessim(0).getTipusTerreny(0).getPlanta(3).getAbs(edat);
-				try{for( int i=0;printed==false;i++) {
-					for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems()&&!printed;j++) {
-						for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems()&&!printed;k++) {
-							if(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient().equalsIgnoreCase(especie)){
-								System.out.println(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbs(edat));
-								printed=true;
-						}}}}
-				}catch(ClassCastException E) {
-					System.out.println("No s'ha trobat l'element buscat");
-				}
+				System.out.println(CFitx.absort(llistaPlantacions, especie, edat));
+				
 				
 				break;
 			case 8:
@@ -187,8 +180,8 @@ public class Programa {
 			case 12:
 				System.out.println("Introudeixi el nou any ->");
 				teclado = new Scanner(System.in);
-				int nouany = teclado.nextInt();
-				System.out.println(nouany);
+				any = teclado.nextInt();
+				System.out.println(any);
 				break;
 			case 13:
 				break;

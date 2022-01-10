@@ -165,5 +165,37 @@ public class CFitx {
 		return -1;
 	}
 	
+	public static float absort(LlistaGeneric<Plantacions>llistaPlantacions,String especie,int edat) {
+		boolean printed=false;
+		//float uno=llistaPlantacions.consultatIessim(0).getTipusTerreny(0).getPlanta(3).getAbs(edat);
+		try{for( int i=0;printed==false;i++) {
+			for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems()&&!printed;j++) {
+				for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems()&&!printed;k++) {
+					if(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient().equalsIgnoreCase(especie)){
+						//System.out.println(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbs(edat));
+						return llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbs(edat);
+						
+				}}}}
+		}catch(ClassCastException E) {
+			System.out.println("No s'ha trobat l'element buscat");
+		}
+		return 0;
+	}
+	public static float rodalAbsor(LlistaGeneric<Plantacions>llistaPlantacions,String plant,int any) {
+		float total=0;
+		for(int i=0;i<llistaPlantacions.nElems();i++) {
+			for(int j=0;j<llistaPlantacions.consultatIessim(i).getNelems();j++) {
+				for(int k=0;k<llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems();k++) {
+					int age=any-llistaPlantacions.consultatIessim(i)
+							.getAnyPlantacio();
+					total=total+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k)*llistaPlantacions.consultatIessim(i)
+							.getTipusTerreny(j).getPlanta(k).getAbs(any-llistaPlantacions.consultatIessim(i)
+									.getAnyPlantacio());
+				}
+			}
+				
+		}
+		return total;
+	}
 
 }

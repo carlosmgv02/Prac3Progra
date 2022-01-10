@@ -27,6 +27,9 @@ public class Terreny<E>  {
 		this.unitats.afegir(unitats);
 		nElems++;
 	}
+	public int getUnits(int i) {
+		return unitats.consultatIessim(i);
+	}
 	public String getUnitats(){
 		String text=new String();
 		for(int i=0;unitats.consultatIessim(i)!=null;i++) {
