@@ -108,7 +108,7 @@ public class Interficie extends JFrame {
 		
 		JLabel llegenda = new JLabel();
 		llegenda.setBounds(0, 420, 300, 50);
-		llegenda.setText("Negre->50, Lila->150, Blau->250, Verd->400");
+		llegenda.setText("Negre->40K, Lila->1M, Blau->1M5k, Verd->Mes de 1M5K");
 		panel.add(llegenda);
 	}
 	
