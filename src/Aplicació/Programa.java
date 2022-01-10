@@ -53,8 +53,7 @@ public class Programa {
 					+ " modificar per als càlculs següents");
 			System.out.println(
 					"13- Mostrar la quantitat de CO2 que permet absorbir cada rodal d’una plantació en l’any actual.");
-			System.out
-			.println("14- Mostrar la quantitat de CO2 que permet absorbir el conjunt d'unitats plantades d'una"
+			System.out.println("14- Mostrar la quantitat de CO2 que permet absorbir el conjunt d'unitats plantades d'una"
 					+ " espècie eb l'any actual.");
 			System.out.println("15- Sortir del programa");
 			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();

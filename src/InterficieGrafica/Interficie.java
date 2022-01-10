@@ -16,7 +16,7 @@ import javax.swing.event.AncestorListener;
 
 public class Interficie extends JFrame {
 //Funciona? 
-	private String colorPedres = "black";
+	private String colorPedres = "magenta";
 	private String colorTrossos = "black";
 	private int anyActual = 0;
 	
@@ -141,22 +141,17 @@ public class Interficie extends JFrame {
 		ActionListener oyentdeDeInfo = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				JOptionPane.showMessageDialog(null, "1. Carregar les dades dels fitxers.\n"
-						+ "2. Llistar les dades de tots els tipus de terreny.\n"
-						+ "3. Llistar les dades de totes les plantacions.\n"
-						+ "4. Llistar les dades de les plantacions que tenen algun rodal d’un tipus de terreny.\n"
-						+ "5. Donada una plantació, mostrar quantes unitats de cada espècie s’hi ha plantat.\n"
-						+ "6. Llistar les dades de totes les espècies.\n"
-						+ "7. Donada una espècie i una edat, mostrar la quantitat de CO2 que permet absorbir.\n"
-						+ "8. Afegir una nova espècie de planta.\n"
-						+ "9. Esborrar les dades d’una plantació.\n"
-						+ "10. Modificar l’any de plantació d’una plantació.\n"
-						+ "11. Modificar les dades d’un rodal d’una plantació.\n"
-						+ "12. Modificar l’any en què ens trobem. \n"
-						+ "13. Mostrar la quantitat de CO2 que permet absorbir cada rodal d’una plantació en l’any actual.\n"
-						+ "14. Mostrar la quantitat de CO2 que permet absorbir el conjunt d’unitats plantades d’una espècie.\n"
-						+ "15. Sortir. Permetre sortir guardant la informació de les classes als fitxers o no.\n"
-						);
+				if(colorPedres.equalsIgnoreCase("black")) {
+					botopedres.setBackground(Color.black);
+				}else if(colorPedres.equalsIgnoreCase("magenta")) {
+					botopedres.setBackground(Color.magenta);
+				}else if(colorPedres.equalsIgnoreCase("red")) {
+					botopedres.setBackground(Color.red);
+				}else if(colorPedres.equalsIgnoreCase("blue")) {
+					botopedres.setBackground(Color.blue);
+				}else if(colorPedres.equalsIgnoreCase("green")) {
+					botopedres.setBackground(Color.green);
+				}
 			}
 		};
 		botopedres.addActionListener(oyentdeDeInfo);
@@ -173,18 +168,17 @@ public class Interficie extends JFrame {
 		ActionListener oyentdeDeAccio = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				if(esNumero(entradaAny.getText())) {
-					if(Double.parseDouble(entradaAny.getText()) <1 ||Double.parseDouble(entradaAny.getText()) >15) {
-						JOptionPane.showMessageDialog(null, "Has de posar un nombre indicat a les opcions, si no saps quines sons, fes click al boto");
-					}else {
-						opcio = (int) Double.parseDouble(entradaAny.getText());
-						JOptionPane.showMessageDialog(null, "Accio "+ opcio);
-						
-					}
-				}else {
-					JOptionPane.showMessageDialog(null, "Has de posar un nombre");
+				if(colorTrossos.equalsIgnoreCase("black")) {
+					botoTros.setBackground(Color.black);
+				}else if(colorTrossos.equalsIgnoreCase("magenta")) {
+					botoTros.setBackground(Color.magenta);
+				}else if(colorTrossos.equalsIgnoreCase("red")) {
+					botoTros.setBackground(Color.red);
+				}else if(colorTrossos.equalsIgnoreCase("blue")) {
+					botoTros.setBackground(Color.blue);
+				}else if(colorTrossos.equalsIgnoreCase("green")) {
+					botoTros.setBackground(Color.green);
 				}
-				
 			}
 		};
 		botoTros.addActionListener(oyentdeDeAccio);
@@ -212,13 +206,7 @@ public class Interficie extends JFrame {
 	public void setColorTrossos(String colorTrossos) {
 		this.colorTrossos = colorTrossos;
 	}
-	public String getColorPedres() {
-		return colorPedres;
-	}
 
-	public String getColorTrossos() {
-		return colorTrossos;
-	}
 	
 	public void setanyActual(int anyActual) {
 		this.anyActual = anyActual;

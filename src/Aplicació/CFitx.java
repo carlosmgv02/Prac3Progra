@@ -183,6 +183,7 @@ public class CFitx {
 	}
 	public static float rodalAbsor(LlistaGeneric<Plantacions>llistaPlantacions,String plant,int any) {
 		float total=0;
+		float total1 = 0;
 		for(int i=0;i<llistaPlantacions.nElems();i++) {
 			if(llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(plant))
 			if(any>llistaPlantacions.consultatIessim(i).getAnyPlantacio()) {
@@ -203,11 +204,12 @@ public class CFitx {
 									.getAnyPlantacio());*/
 				}
 				System.out.println("Absorció total del rodal: "+total);
+				total1 += total;
 				total=0;
 				
 		}
 			}else System.out.println("L'any introduit és anterior a la la plantació "+llistaPlantacions.consultatIessim(i).getNomPlantacio());}
-		return total;
+		return total1;
 	}
 
 }
