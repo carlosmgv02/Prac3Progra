@@ -1,9 +1,10 @@
 package InterficieGrafica;
-
+import Dades.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,8 +33,8 @@ public class Interficie extends JFrame {
 	JLabel verd = new JLabel();
 	
 	private int opcio = 0;
-	public Interficie() {
-		
+	public Interficie(LlistaGeneric<Plantacions>lPlants) {
+		llegirAny();
 		//Establir tamany de pantalla
 		this.setSize(500,500);
 		//Li donem un nom a la finestra
@@ -73,7 +74,7 @@ public class Interficie extends JFrame {
 		
 		//Espai per a posar la etiqueta que mostrará info
 		info.setBounds(0, 0, 500, 20);
-		info.setBackground(Color.black);
+		info.setBackground(Color.WHITE);
 		info.setOpaque(true);
 		info.setText("Practica 3 feta per Carlos, Genís i Joan");
 		panel.add(info);
@@ -118,8 +119,10 @@ public class Interficie extends JFrame {
 		
 		//Crear boto per a sortir
 		JButton botoExit = new JButton();
-		botoExit.setBounds (400,20, 90, 40);
+		botoExit.setBounds (400,20, 110, 40);
 		botoExit.setText("Exit");
+		botoExit.setBackground(Color.RED);
+		botoExit.setForeground(Color.WHITE);
 		botoExit.setEnabled(true);
 		panel.add(botoExit);
 		
@@ -130,6 +133,21 @@ public class Interficie extends JFrame {
 			}
 		};
 		botoExit.addActionListener(oyentdeDeExit);
+		
+		JButton switchYear=new JButton();
+		switchYear.setBounds(380,60,110,40);
+		
+		switchYear.setText("Canviar d'any");
+		switchYear.setEnabled(true);
+		panel.add(switchYear);
+		ActionListener canviarAny=new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent ae) {
+				llegirAny();
+				
+			}
+		};
+		switchYear.addActionListener(canviarAny);
 		
 		//Crear boto per a mostrar que fa cada cosa
 		JButton botopedres = new JButton();
@@ -206,12 +224,26 @@ public class Interficie extends JFrame {
 	public void setColorTrossos(String colorTrossos) {
 		this.colorTrossos = colorTrossos;
 	}
-
+	public int getAny() {
+		return anyActual;
+	}
 	
 	public void setanyActual(int anyActual) {
 		this.anyActual = anyActual;
-		entradaAny.setText("Ara estas a l'any "+anyActual);
+		
+	}
+	public int  llegirAny() {
+		String nom = JOptionPane.showInputDialog("Indica a quin any et trobes:");
+		while (nom == null || nom.equals("")) {
+			// Missatge d'error.
+			JOptionPane.showMessageDialog(null, "Has d'introduir un any!", "ERROR", JOptionPane.ERROR_MESSAGE);
+			nom = JOptionPane.showInputDialog("Indica a quin any et trobes: ");
+				
+		}
+		 this.anyActual = Integer.parseInt(nom);
+		 entradaAny.setText("Ara estas a l'any "+anyActual);
 		panel.add(entradaAny);
+		return this.anyActual;
 	}
 	
 } 

@@ -2,6 +2,8 @@ package InterficieGrafica;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import Aplicació.*;
 import Dades.LlistaGeneric;
 import Dades.Plantacions;
@@ -11,13 +13,13 @@ public class ProgramaEnInterficie {
 	private static Scanner teclado = new Scanner(System.in);
 	
 	public static void main(String[] args) throws FileNotFoundException, OutOfRangeException {
-		CFitx.leerPlantaciones();
+		
 		LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 		
 		Interficie Finestra = new Interficie();
-		//Finestra.setanyActual(llegirAny());0
-		int any = llegirAny();
-		Finestra.setanyActual(any);
+		//Finestra.setanyActual(llegirAny());
+		int any=Finestra.getAny();
+		
 		//System.out.println("tamare"+ );
 		//Fa falta la funcio per a detectar lo interval
 		
@@ -55,10 +57,5 @@ public class ProgramaEnInterficie {
 		Finestra.setVisible(true);
 		System.out.println("S");
 	}
-	private static int llegirAny()  throws FileNotFoundException {
-
-		System.out.println("Introdueix l'any actual");
-		int num = teclado.nextInt();
-		return num;
-	}
+	
 }
