@@ -1,6 +1,6 @@
 package Dades;
-
-public class Rodals {
+import java.io.Serializable;
+public class Rodals implements Serializable {
 	Terreny terreny;
 	float superficie;
 	public Rodals (Terreny terreny,float superficie) {

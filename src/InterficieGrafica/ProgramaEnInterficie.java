@@ -17,6 +17,7 @@ public class ProgramaEnInterficie {
 		LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 		
 		Interficie Finestra = new Interficie();
+		Finestra2 Finestra2 = new Finestra2();
 		//Finestra.setanyActual(llegirAny());
 		int any=Finestra.getAny();
 		
@@ -53,8 +54,11 @@ public class ProgramaEnInterficie {
 		}else if(color >1050000) {
 			Finestra.setColorTrossos("green");
 		}
-
+		
+		Finestra.setLocation(1000, 300);
 		Finestra.setVisible(true);
+		Finestra2.setLocation(2000, 300);
+		Finestra2.setVisible(true);
 		System.out.println("S");
 	}
 	

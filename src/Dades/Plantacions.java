@@ -1,8 +1,9 @@
 package Dades;
 
 import java.util.Arrays;
+import java.io.Serializable;
 
-public class Plantacions {
+public class Plantacions implements Serializable {
 	private int any;
 	private Rodals[]rodal;
 	private String nomPlantacio;
@@ -13,8 +14,7 @@ public class Plantacions {
 		this.nomPlantacio=nom;
 		this.rodal=new Rodals[10];
 		this.rodal[0]=rodals;
-		nElems=1;
-		
+		nElems=1;		
 	}
 	public void deleteAll() {
 		any=0;

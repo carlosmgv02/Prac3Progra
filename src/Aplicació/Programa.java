@@ -21,8 +21,8 @@ public class Programa {
 		LlistaGeneric<Plantacions>plantas=CFitx.leerPlantaciones();
 		LlistaGeneric<Arboria>plant=CFitx.leerArboles();
 		*/
-		
-		mostrarMenu();
+		CFitx.leerSerializado();
+		//mostrarMenu();
 	}
 	
 	
@@ -59,6 +59,8 @@ public class Programa {
 			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 			
 			LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
+			CFitx.escribirFicheroSerializado(llistaPlantacions);
+			
 			
 			boolean found=false;
 

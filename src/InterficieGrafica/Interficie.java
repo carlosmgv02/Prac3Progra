@@ -24,8 +24,6 @@ public class Interficie extends JFrame {
 	JPanel panel = new JPanel();
 	JLabel info = new JLabel();
 	JTextArea entradaAny = new JTextArea();
-	
-	
 	JLabel negre = new JLabel();
 	JLabel lila = new JLabel();
 	JLabel roig = new JLabel();
@@ -33,7 +31,7 @@ public class Interficie extends JFrame {
 	JLabel verd = new JLabel();
 	
 	private int opcio = 0;
-	public Interficie(LlistaGeneric<Plantacions>lPlants) {
+	public Interficie() {
 		llegirAny();
 		//Establir tamany de pantalla
 		this.setSize(500,500);

@@ -1,10 +1,11 @@
 package Dades;
 
 import java.util.Arrays;
+import java.io.Serializable;
 
 import Exceptions.OutOfRangeException;
 
-public class LlistaGeneric<E> implements DefGeneric<E> {
+public class LlistaGeneric<E > implements DefGeneric<E>, Serializable  {
 	private E[] llista;
 	private int nElems;
 

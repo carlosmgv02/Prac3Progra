@@ -1,8 +1,9 @@
 package Dades;
 
 import Exceptions.OutOfRangeException;
+import java.io.Serializable;
 
-public class Terreny<E>  {
+public class Terreny<E> implements Serializable {
 	private String nomTerreny ;
 	private LlistaGeneric<Integer>unitats;
 	private float superf=0;
@@ -75,7 +76,7 @@ public class Terreny<E>  {
 		try {
 		return (Planta)nomPlanta.consultatIessim(i);
 		}catch(ClassCastException E){
-			return new Planta("Invalid",0,0);
+			return null;
 		}
 	}
 
