@@ -177,7 +177,9 @@ public class CFitx {
 		}
 		return -1;
 	}
-
+	public static float absorEspecie(LlistaGeneric<Plantacions>llistaPlantacions,String especie,int any) {
+		
+	}
 	public static float absort(LlistaGeneric<Plantacions> llistaPlantacions, String especie, int edat) {
 		boolean printed = false;
 		// float

@@ -21,8 +21,8 @@ public class Programa {
 		LlistaGeneric<Plantacions>plantas=CFitx.leerPlantaciones();
 		LlistaGeneric<Arboria>plant=CFitx.leerArboles();
 		*/
-		CFitx.leerSerializado();
-		//mostrarMenu();
+		//CFitx.leerSerializado();
+		mostrarMenu();
 	}
 	
 	
@@ -54,7 +54,7 @@ public class Programa {
 			System.out.println(
 					"13- Mostrar la quantitat de CO2 que permet absorbir cada rodal d’una plantació en l’any actual.");
 			System.out.println("14- Mostrar la quantitat de CO2 que permet absorbir el conjunt d'unitats plantades d'una"
-					+ " espècie eb l'any actual.");
+					+ " espècie en l'any actual.");
 			System.out.println("15- Sortir del programa");
 			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 			

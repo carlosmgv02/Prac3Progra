@@ -43,11 +43,13 @@ public class Interficie extends JFrame {
 		setTitle("Prac 3");
 
 		//Posem la fienstra al centre de la pantalla
-		//setLocation(100,300);
-		setLocationRelativeTo(null);
+		setLocation(100,300);
+		//setLocationRelativeTo(null);
+
 
 		JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
 		fondo.setBounds(0, 0, 500, 500);
+		
 
 		panel.add(fondo);
 
@@ -194,7 +196,8 @@ public class Interficie extends JFrame {
 
 		//Crear boto per a mostrar que fa cada cosa
 		JButton botopedres = new JButton();
-		botopedres.setBounds (0,100, 400, 40);
+		botopedres.setBounds (0,100, 500, 40);
+		
 		botopedres.setText("Finca les pedres, 2018, 4 rodals, 6381 arbres, 340 arbustives");
 		botopedres.setEnabled(true);
 		if(colorPedres.equalsIgnoreCase("black")) {
@@ -235,7 +238,8 @@ public class Interficie extends JFrame {
 
 
 		JButton botoTros = new JButton();
-		botoTros.setBounds (0,140, 400, 40);
+		
+		botoTros.setBounds (0,140, 500, 40);
 		botoTros.setText("Finca els trossos, 2015, 7 rodals, 5 arbres, 0 arbustives");
 		botoTros.setEnabled(true);
 		if(colorTrossos.equalsIgnoreCase("black")) {

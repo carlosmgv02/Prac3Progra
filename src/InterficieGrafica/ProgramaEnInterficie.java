@@ -58,7 +58,6 @@ public class ProgramaEnInterficie {
 		//Finestra.set;
 		Finestra.setVisible(true);
 		
-		System.out.println("S");
 	}
 	
 }
