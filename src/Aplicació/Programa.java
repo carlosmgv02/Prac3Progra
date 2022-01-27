@@ -33,6 +33,9 @@ public class Programa {
 		teclado=new Scanner(System.in);
 		System.out.println("Introdueix l'any actual");
 		int any=teclado.nextInt();
+		if(any<2000 || any>2100) {
+			System.out.println("L'any introduït no és vàlid i els càlculs no seran correctes. Reinicia el programa.");
+		}
 		
 		boolean leave = false;
 		do {
