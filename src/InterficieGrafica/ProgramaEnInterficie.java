@@ -26,19 +26,14 @@ public class ProgramaEnInterficie {
 		
 		int color = (int)CFitx.rodalAbsor(llistaPlantacions, "Finca les pedres", any);
 		if (color < 400000) {
-			color = 1;
 			Finestra.setColorPedres("black");
 		}else if(color <1000000) {
-			color = 2;
 			Finestra.setColorPedres("magenta");
 		}else if(color <1005000) {
-			color = 3;
 			Finestra.setColorPedres("red");
 		}else if(color <1050000) {
-			color = 4;
 			Finestra.setColorPedres("blue");
 		}else if(color >1050000) {
-			color = 5;
 			Finestra.setColorPedres("green");
 		}
 
@@ -54,7 +49,7 @@ public class ProgramaEnInterficie {
 		}else if(color >1050000) {
 			Finestra.setColorTrossos("green");
 		}
-		
+		Finestra.canviacolors();
 		//Finestra.set;
 		Finestra.setVisible(true);
 		

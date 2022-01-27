@@ -33,7 +33,9 @@ public class Interficie extends JFrame {
 	JLabel roig = new JLabel();
 	JLabel blau = new JLabel();
 	JLabel verd = new JLabel();
-
+	JButton botoTros = new JButton();
+	JButton botopedres = new JButton();
+	
 	private int opcio = 0;
 	public Interficie() {
 		llegirAny();
@@ -104,6 +106,8 @@ public class Interficie extends JFrame {
 		}
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+
+	
 
 	private void iniciarComponents() {
 
@@ -195,23 +199,12 @@ public class Interficie extends JFrame {
 		switchYear.addActionListener(canviarAny);
 
 		//Crear boto per a mostrar que fa cada cosa
-		JButton botopedres = new JButton();
+		
 		botopedres.setBounds (0,100, 500, 40);
 		
 		botopedres.setText("Finca les pedres, creada el 2018");
 		botopedres.setEnabled(true);
-		if(colorPedres.equalsIgnoreCase("black")) {
-			botopedres.setBackground(Color.black);
-			botopedres.setForeground(Color.WHITE);
-		}else if(colorPedres.equalsIgnoreCase("magenta")) {
-			botopedres.setBackground(Color.magenta);
-		}else if(colorPedres.equalsIgnoreCase("red")) {
-			botopedres.setBackground(Color.red);
-		}else if(colorPedres.equalsIgnoreCase("blue")) {
-			botopedres.setBackground(Color.blue);
-		}else if(colorPedres.equalsIgnoreCase("green")) {
-			botopedres.setBackground(Color.green);
-		}
+		
 		
 		panel.add(botopedres);
 
@@ -237,23 +230,12 @@ public class Interficie extends JFrame {
 		//Boto per a posar una opció
 
 
-		JButton botoTros = new JButton();
+		
 		
 		botoTros.setBounds (0,140, 500, 40);
 		botoTros.setText("Finca els trossos, creada el 2015");
 		botoTros.setEnabled(true);
-		if(colorTrossos.equalsIgnoreCase("black")) {
-			botoTros.setBackground(Color.black);
-			botoTros.setForeground(Color.WHITE);
-		}else if(colorTrossos.equalsIgnoreCase("magenta")) {
-			botoTros.setBackground(Color.magenta);
-		}else if(colorTrossos.equalsIgnoreCase("red")) {
-			botoTros.setBackground(Color.red);
-		}else if(colorTrossos.equalsIgnoreCase("blue")) {
-			botoTros.setBackground(Color.blue);
-		}else if(colorTrossos.equalsIgnoreCase("green")) {
-			botoTros.setBackground(Color.green);
-		}
+		
 		panel.add(botoTros);
 		/*ActionListener oyentdeDeAccio = new ActionListener() {
 			@Override
@@ -319,6 +301,32 @@ public class Interficie extends JFrame {
 		entradaAny.setAlignmentX(400);
 		panel.add(entradaAny);
 		return this.anyActual;
+	}
+	public void canviacolors() {
+		if(colorPedres.equalsIgnoreCase("black")) {
+			botopedres.setBackground(Color.black);
+			botopedres.setForeground(Color.WHITE);
+		}else if(colorPedres.equalsIgnoreCase("magenta")) {
+			botopedres.setBackground(Color.magenta);
+		}else if(colorPedres.equalsIgnoreCase("red")) {
+			botopedres.setBackground(Color.red);
+		}else if(colorPedres.equalsIgnoreCase("blue")) {
+			botopedres.setBackground(Color.blue);
+		}else if(colorPedres.equalsIgnoreCase("green")) {
+			botopedres.setBackground(Color.green);
+		}
+		if(colorTrossos.equalsIgnoreCase("black")) {
+			botoTros.setBackground(Color.black);
+			botoTros.setForeground(Color.WHITE);
+		}else if(colorTrossos.equalsIgnoreCase("magenta")) {
+			botoTros.setBackground(Color.magenta);
+		}else if(colorTrossos.equalsIgnoreCase("red")) {
+			botoTros.setBackground(Color.red);
+		}else if(colorTrossos.equalsIgnoreCase("blue")) {
+			botoTros.setBackground(Color.blue);
+		}else if(colorTrossos.equalsIgnoreCase("green")) {
+			botoTros.setBackground(Color.green);
+		}
 	}
 
 } 
