@@ -21,7 +21,7 @@ import Aplicació.CFitx;
 
 public class Interficie extends JFrame {
 	//Funciona? 
-	private String colorPedres = "magenta";
+	private String colorPedres = "black";
 	private String colorTrossos = "black";
 	private int anyActual = 0;
 

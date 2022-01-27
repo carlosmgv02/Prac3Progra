@@ -92,6 +92,7 @@ public class Programa {
 				System.out.println("\t1-Finca Les Pedres\n\t2-Els trossos");
 				teclado=new Scanner(System.in);
 				int num=teclado.nextInt();
+				num-=1;
 
 
 				for(int j=0;j<llistaPlantacions.consultatIessim(num).getNelems();j++)
