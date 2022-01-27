@@ -152,7 +152,7 @@ public class Interficie extends JFrame {
 		entradaAny.setEditable(false);
 
 		JLabel llegenda = new JLabel();
-		llegenda.setBounds(0, 420, 300, 50);
+		llegenda.setBounds(0, 420, 500, 50);
 		llegenda.setText("Negre->40K, Lila->1M, Blau->1M5k, Verd->Mes de 1M5K");
 		panel.add(llegenda);
 	}
@@ -198,7 +198,7 @@ public class Interficie extends JFrame {
 		JButton botopedres = new JButton();
 		botopedres.setBounds (0,100, 500, 40);
 		
-		botopedres.setText("Finca les pedres, 2018, 4 rodals, 6381 arbres, 340 arbustives");
+		botopedres.setText("Finca les pedres, creada el 2018");
 		botopedres.setEnabled(true);
 		if(colorPedres.equalsIgnoreCase("black")) {
 			botopedres.setBackground(Color.black);
@@ -240,7 +240,7 @@ public class Interficie extends JFrame {
 		JButton botoTros = new JButton();
 		
 		botoTros.setBounds (0,140, 500, 40);
-		botoTros.setText("Finca els trossos, 2015, 7 rodals, 5 arbres, 0 arbustives");
+		botoTros.setText("Finca els trossos, creada el 2015");
 		botoTros.setEnabled(true);
 		if(colorTrossos.equalsIgnoreCase("black")) {
 			botoTros.setBackground(Color.black);
@@ -307,7 +307,8 @@ public class Interficie extends JFrame {
 	}
 	public int  llegirAny() {
 		String nom = JOptionPane.showInputDialog("Indica a quin any et trobes:");
-		while (nom == null || nom.equals("")) {
+		
+		while (nom == null || nom.equals("")||Integer.parseInt(nom)<0) {
 			// Missatge d'error.
 			JOptionPane.showMessageDialog(null, "Has d'introduir un any!", "ERROR", JOptionPane.ERROR_MESSAGE);
 			nom = JOptionPane.showInputDialog("Indica a quin any et trobes: ");

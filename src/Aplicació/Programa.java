@@ -10,18 +10,8 @@ import java.util.*;
 
 public class Programa {
 	private static Scanner teclado;
-
+	public static int operation=0;
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
-		// TODO Auto-generated method stub
-		/*
-		LlistaGeneric<Terreny>terr=CFitx.leerTerreno();
-		LlistaGeneric<Plantacions>planta=CFitx.leerPlantaciones();
-		//System.out.println(terr.consultatIessim(0).getiNom(4));
-		LlistaGeneric<Arbustiva>arbustos=CFitx.leerArbustos();
-		LlistaGeneric<Plantacions>plantas=CFitx.leerPlantaciones();
-		LlistaGeneric<Arboria>plant=CFitx.leerArboles();
-		*/
-		//CFitx.leerSerializado();
 		mostrarMenu();
 	}
 	
@@ -62,7 +52,6 @@ public class Programa {
 			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 			
 			LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
-			CFitx.escribirFicheroSerializado(llistaTerreno);
 			
 			
 			boolean found=false;
@@ -100,6 +89,7 @@ public class Programa {
 				break;
 			case 5:
 				//LlistaGeneric<Plantacions>llistaPLantacions=leerPlantaciones();
+				System.out.println("\t1-Finca Les Pedres\n\t2-Els trossos");
 				teclado=new Scanner(System.in);
 				int num=teclado.nextInt();
 
@@ -129,6 +119,24 @@ public class Programa {
 				
 				break;
 			case 8:
+				System.out.println("Introdueixi el nom de la plantacio on vol afegir  ->");
+				String plantaciotriada = new String();
+				plantaciotriada = teclado.nextLine();
+				if (plantaciotriada.equalsIgnoreCase("Els trossos")){
+					System.out.println("Introdueixi el nom de la planta on vol afegir  ->");
+					String novaplanta = new String();
+					novaplanta = teclado.nextLine();
+					llistaPlantacions.consultatIessim(0).getTipusTerreny(0).afegirPlanta(novaplanta, 2002);
+					
+				}else if(plantaciotriada.equalsIgnoreCase("Finca les pedres")){
+					System.out.println("Introdueixi el nom de la planta on vol afegir  ->");
+					String novaplanta = new String();
+					novaplanta = teclado.nextLine();
+					llistaPlantacions.consultatIessim(1).getTipusTerreny(0).afegirPlanta(novaplanta, 2002);
+				}else{
+					System.out.println("La plantacio seleccionada no es la correcta");
+				}
+
 				break;
 			case 9:
 				
@@ -195,15 +203,24 @@ public class Programa {
 				CFitx.rodalAbsor(llistaPlantacions, finca, any);
 				break;
 			case 14:
+				teclado.nextLine();
+				System.out.println("Introdueix el nom de la espècie");
+				String espècie=teclado.nextLine();
+				System.out.println("Absorció total de la espècie l'any "+any+": "+CFitx.absorEspecie(llistaPlantacions, espècie, any));
+				
 				break;
 			case 15:
 				leave = true;
+				//System.exit(1);
+				System.out.println("\n\t\t\t\tPROGRAMA FINALITZAT");
 				break;
 			}
 		} while (!leave);
 
 	}
-
+	public static void mas(int n) {
+		++n;
+	}
 	public static int getMenuOption() {
 		int num = 0;
 		teclado = new Scanner(System.in);

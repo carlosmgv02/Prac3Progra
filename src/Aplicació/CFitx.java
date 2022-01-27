@@ -178,7 +178,27 @@ public class CFitx {
 		return -1;
 	}
 	public static float absorEspecie(LlistaGeneric<Plantacions>llistaPlantacions,String especie,int any) {
+		float absorc=0;
+		boolean found=false;
 		
+			for (int i = 0; i<llistaPlantacions.nElems()&&!found; i++) {
+				for (int j = 0; j < llistaPlantacions.consultatIessim(i).getNelems()&&!found; j++) {
+					for (int k = 0; k < llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems()&&!found&&
+							llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k)!=null; k++) {
+						if (llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient()
+								.equalsIgnoreCase(especie)) {
+							try{
+							absorc=llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbsor(any)*
+									llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getUnits(k);
+							found=true;
+							}catch(NumberFormatException e) {
+								System.out.println(e.getMessage());
+							}
+						}
+					}
+				}
+		}
+			return absorc;
 	}
 	public static float absort(LlistaGeneric<Plantacions> llistaPlantacions, String especie, int edat) {
 		boolean printed = false;
@@ -302,5 +322,7 @@ public class CFitx {
 		
 		
 	}
+	
+	
 
 }

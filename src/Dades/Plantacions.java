@@ -16,6 +16,9 @@ public class Plantacions implements Serializable {
 		this.rodal[0]=rodals;
 		nElems=1;		
 	}
+	public void afegirPlanta() {
+		
+	}
 	public void deleteAll() {
 		any=0;
 		rodal=null;
