@@ -255,7 +255,7 @@ public class CFitx {
 			fichero = new FileOutputStream("src/terreny.dat");
 			salida = new ObjectOutputStream(fichero);
 			
-				salida.writeObject(fitxer.consultatIessim(0));
+				salida.writeObject(fitxer);
 
 		} catch (FileNotFoundException e) {
 			System.out.println("1" + e.getMessage());

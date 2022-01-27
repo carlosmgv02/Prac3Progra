@@ -87,7 +87,7 @@ public class Terreny<E> implements Serializable {
 	@Override
 	public String toString() {
 		String devolver =new String();
-		for(int i=0;i<unitats.length();i++) {
+		for(int i=0;i<unitats.length()&&unitats.consultatIessim(i)!=null;i++) {
 			devolver=devolver+"\t\tNom planta = "+nomPlanta.consultatIessim(i)+", unitats = "+unitats.consultatIessim(i)+"\n";
 		}
 		//return "Terreny =" + nomTerreny + "\n\tunitats=" + unitats + "\tnomPlanta=" + nomPlanta ;

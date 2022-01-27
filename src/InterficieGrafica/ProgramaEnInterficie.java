@@ -55,10 +55,9 @@ public class ProgramaEnInterficie {
 			Finestra.setColorTrossos("green");
 		}
 		
-		Finestra.setLocation(1000, 300);
+		//Finestra.set;
 		Finestra.setVisible(true);
-		Finestra2.setLocation(2000, 300);
-		Finestra2.setVisible(true);
+		
 		System.out.println("S");
 	}
 	

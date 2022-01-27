@@ -59,7 +59,7 @@ public class Programa {
 			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 			
 			LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
-			CFitx.escribirFicheroSerializado(llistaPlantacions);
+			CFitx.escribirFicheroSerializado(llistaTerreno);
 			
 			
 			boolean found=false;
