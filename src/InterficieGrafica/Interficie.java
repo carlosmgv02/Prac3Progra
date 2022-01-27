@@ -171,7 +171,8 @@ public class Interficie extends JFrame {
 		ActionListener oyentdeDeExit = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				System.exit(0);
+				//System.exit(0);
+				dispose();
 			}
 		};
 		botoExit.addActionListener(oyentdeDeExit);
@@ -310,6 +311,7 @@ public class Interficie extends JFrame {
 		}
 		this.anyActual = Integer.parseInt(nom);
 		entradaAny.setText("Ara estas a l'any "+anyActual);
+		entradaAny.setAlignmentX(400);
 		panel.add(entradaAny);
 		return this.anyActual;
 	}

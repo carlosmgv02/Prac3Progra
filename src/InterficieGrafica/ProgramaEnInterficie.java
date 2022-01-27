@@ -17,7 +17,7 @@ public class ProgramaEnInterficie {
 		LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 		
 		Interficie Finestra = new Interficie();
-		Finestra2 Finestra2 = new Finestra2();
+		//Finestra2 Finestra2 = new Finestra2();
 		//Finestra.setanyActual(llegirAny());
 		int any=Finestra.getAny();
 		
