@@ -20,10 +20,12 @@ public class Arboria extends Planta implements Serializable{
 		absorció[2]=tre;
 		
 	}
+	public Arboria(String nom) {
+		super(nom,1);
+	}
 	public Arboria() {
 		
 	}
-	
 	
 	public int[]separar(String texto){
 		int []tabla=new int[2];

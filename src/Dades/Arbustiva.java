@@ -6,6 +6,9 @@ public class Arbustiva extends Planta implements Serializable {
 		super(nombreCient, type);
 		abs=absorcio;
 	}
+	public Arbustiva(String nom) {
+		super(nom,2);
+	}
 	public float getAbsor(int age) {
 		if(age>5)
 			return abs;

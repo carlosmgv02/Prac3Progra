@@ -13,6 +13,8 @@ public class Programa {
 	public static int operation=0;
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
 		mostrarMenu();
+
+
 	}
 	
 	
@@ -26,7 +28,9 @@ public class Programa {
 		if(any<2000 || any>2100) {
 			System.out.println("L'any introduït no és vàlid i els càlculs no seran correctes. Reinicia el programa.");
 		}
+		LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 		
+		LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
 		boolean leave = false;
 		do {
 			
@@ -49,9 +53,7 @@ public class Programa {
 			System.out.println("14- Mostrar la quantitat de CO2 que permet absorbir el conjunt d'unitats plantades d'una"
 					+ " espècie en l'any actual.");
 			System.out.println("15- Sortir del programa");
-			LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 			
-			LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
 			
 			
 			boolean found=false;
@@ -120,23 +122,47 @@ public class Programa {
 				
 				break;
 			case 8:
+				boolean valid=true;
+				teclado.nextLine();
+				int plantac=0,tipus=0;
 				System.out.println("Introdueixi el nom de la plantacio on vol afegir  ->");
 				String plantaciotriada = new String();
 				plantaciotriada = teclado.nextLine();
-				if (plantaciotriada.equalsIgnoreCase("Els trossos")){
-					System.out.println("Introdueixi el nom de la planta on vol afegir  ->");
-					String novaplanta = new String();
-					novaplanta = teclado.nextLine();
-					llistaPlantacions.consultatIessim(0).getTipusTerreny(0).afegirPlanta(novaplanta, 2002);
-					
-				}else if(plantaciotriada.equalsIgnoreCase("Finca les pedres")){
-					System.out.println("Introdueixi el nom de la planta on vol afegir  ->");
-					String novaplanta = new String();
-					novaplanta = teclado.nextLine();
-					llistaPlantacions.consultatIessim(1).getTipusTerreny(0).afegirPlanta(novaplanta, 2002);
-				}else{
-					System.out.println("La plantacio seleccionada no es la correcta");
+				switch(plantaciotriada) {
+				case "Els trossos":
+					plantac=1;
+					valid=true;
+					break;
+				case "Finca les pedres":
+					plantac=0;
+					valid=true;
+					break;
+				default:
+					System.out.println("La plantació seleccionada no és correcta");
+					break;
 				}
+				if(valid) {
+				System.out.println("Introdueixi el nom de la planta que vol afegir  ->");
+				String novaplanta = new String();
+				novaplanta = teclado.nextLine();
+				System.out.println("Introdueix el tipus:\t1-Arbòria\t2-Arbustiva");
+				int typePlant;
+				typePlant=teclado.nextInt();
+				switch(typePlant) {
+				case 1:
+					Arboria arb=new Arboria(novaplanta);
+					llistaPlantacions.consultatIessim(plantac).getTipusTerreny(0).afegirPlanta(arb, typePlant);
+					break;
+				case 2:
+					Arbustiva arbo=new Arbustiva(novaplanta);
+					llistaPlantacions.consultatIessim(plantac).getTipusTerreny(0).afegirPlanta(arbo, 2002);
+					break;
+				default:
+					System.out.println("Tipus de planta incorrecte");
+					break;
+					}
+				}
+				
 
 				break;
 			case 9:
@@ -146,10 +172,18 @@ public class Programa {
 				String name = teclado.nextLine();
 				for (int i = 0; llistaPlantacions.consultatIessim(i) != null&&!found; i++) {
 					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(name)) {
-						llistaPlantacions.consultatIessim(i).deleteAll();found=true;}
-					else
-						System.out.println("No s'ha trobat la plantació.");
+						//llistaPlantacions.consultatIessim(i).deleteAll();
+						if(i==0) {
+							llistaPlantacions.setIessim(0, llistaPlantacions.consultatIessim(1));
+						}
+						else
+							llistaPlantacions.resetI(1);
+							//llistaPlantacions.setIessim(1, null);
+						found=true;}
+					
 				}
+				if(!found)
+						System.out.println("No s'ha trobat la plantació.");
 				break;
 			case 10:
 				
@@ -163,12 +197,13 @@ public class Programa {
 				for (int i = 0; llistaPlantacions.consultatIessim(i) != null&&!found; i++) {
 					if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(nom)) {
 						llistaPlantacions.consultatIessim(i).setAnyPlantacio(nouAny);found=true;}
-					else
-						System.out.println("No s'ha trobat la plantació.");
+					
 				}
+				if(!found)
+					System.out.println("No s'ha trobat la plantació.");
 				break;
 			case 11:
-				teclado = new Scanner(System.in);
+				teclado.nextLine();
 				System.out.println("Introdueixi el nom de la plantació a la que vol modificar el rodal ->");
 				String nomPlantacio = teclado.nextLine();
 				System.out.println("Introdueix l'índex del rodal que vol eliminar");
@@ -176,9 +211,10 @@ public class Programa {
 				System.out.println("Introdueixi la superfície que vol que tingui el seu rodal ->");
 				float superficie = teclado.nextFloat();
 				System.out.println("Introdueixi el tipus de terreny que vol que tingui el seu rodal ->");
-				String tipusTerreny = teclado.next();
+				teclado.nextLine();
+				String tipusTerreny = teclado.nextLine();
 				System.out.println("Introdueix un nom de planta per a assignar al terreny");
-				String planta=teclado.next();
+				String planta=teclado.nextLine();
 				System.out.println("Introdueix la quantitat de plantes que vol afegir al terreny");
 				int units=teclado.nextInt();
 				

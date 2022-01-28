@@ -202,6 +202,7 @@ public class CFitx {
 	}
 	public static float absort(LlistaGeneric<Plantacions> llistaPlantacions, String especie, int edat) {
 		boolean printed = false;
+		float absor=0;
 		// float
 		// uno=llistaPlantacions.consultatIessim(0).getTipusTerreny(0).getPlanta(3).getAbs(edat);
 		try {
@@ -211,8 +212,10 @@ public class CFitx {
 							&& !printed; k++) {
 						if (llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getNomCient()
 								.equalsIgnoreCase(especie)) {
+							 return llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbsor(edat);
 							// System.out.println(llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbs(edat));
-							return llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getPlanta(k).getAbsor(edat);
+							
+							
 
 						}
 					}
@@ -220,6 +223,9 @@ public class CFitx {
 			}
 		} catch (ClassCastException E) {
 			System.out.println("No s'ha trobat l'element buscat");
+		}
+		catch(NullPointerException e) {
+			System.out.println("No hi ha hagut cap coincidència");
 		}
 		return 0;
 	}

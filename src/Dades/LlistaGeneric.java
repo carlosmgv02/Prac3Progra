@@ -58,6 +58,11 @@ public class LlistaGeneric<E > implements DefGeneric<E>, Serializable  {
 		if (i < llista.length && llista[i] == null)
 			llista[i] = object;
 	}
+	public void resetI(int i) {
+		if(i>0&&llista[i]!=null) {
+			llista[i]=null;
+		}
+	}
 	
 
 	@Override
