@@ -17,7 +17,6 @@ public abstract class Planta implements Serializable {
 		
 	}
 	
-	
 	public String getNomCient() {
 		return nomCient;
 	}

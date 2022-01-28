@@ -7,7 +7,7 @@ public class Arbustiva extends Planta implements Serializable {
 		abs=absorcio;
 	}
 	public float getAbsor(int age) {
-		if(age>5)
+		if(age>5&&age<500)
 			return abs;
 		else return 0;
 	}

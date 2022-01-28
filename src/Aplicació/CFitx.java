@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import Dades.Absorció;
+//import Dades.Absorció;
 import Dades.Arboria;
 import Dades.LlistaGeneric;
 import Dades.Plantacions;

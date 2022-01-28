@@ -50,6 +50,7 @@ public class ProgramaEnInterficie {
 			Finestra.setColorTrossos("green");
 		}
 		Finestra.canviacolors();
+		//Finestra.repaint();
 		//Finestra.set;
 		Finestra.setVisible(true);
 		
