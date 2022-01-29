@@ -20,7 +20,6 @@ import javax.swing.event.AncestorListener;
 import Aplicació.CFitx;
 
 public class Interficie extends JFrame {
-	//Funciona? 
 	private String colorPedres = "black";
 	private String colorTrossos = "black";
 	private int anyActual = 0;
@@ -43,6 +42,7 @@ public class Interficie extends JFrame {
 		llegirAny();
 		//Establir tamany de pantalla
 		this.setSize(500,500);
+		
 		//Li donem un nom a la finestra
 		setTitle("Prac 3");
 
@@ -106,7 +106,6 @@ public class Interficie extends JFrame {
 	}
 
 	
-
 	private void iniciarComponents() {
 
 
@@ -156,9 +155,7 @@ public class Interficie extends JFrame {
 		panel.add(llegenda);
 	}
 
-
 	private void colocarBotons() {
-
 
 		//Crear boto per a sortir
 		JButton botoExit = new JButton();
@@ -225,8 +222,6 @@ public class Interficie extends JFrame {
 		//Boto per a posar una opció
 
 
-		
-		
 		botoTros.setBounds (0,140, 500, 40);
 		botoTros.setText("Finca els trossos, creada el 2015");
 		botoTros.setEnabled(true);
@@ -297,7 +292,6 @@ public class Interficie extends JFrame {
 		panel.add(entradaAny);
 		conditions();
 		colocarBotons();
-		
 		return this.anyActual;
 	}
 	public void conditions() {

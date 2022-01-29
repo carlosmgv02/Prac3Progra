@@ -15,7 +15,6 @@ public class ProgramaEnInterficie {
 	public static void main(String[] args) throws FileNotFoundException, OutOfRangeException {
 		
 		LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
-		
 		Interficie Finestra = new Interficie(llistaPlantacions);
 		Finestra.setVisible(true);
 		
