@@ -300,6 +300,7 @@ public class Interficie extends JFrame {
 		entradaAny.setText("Ara estas a l'any "+anyActual);
 		entradaAny.setAlignmentX(400);
 		panel.add(entradaAny);
+		colocarBotons();
 		
 		return this.anyActual;
 	}
@@ -328,7 +329,7 @@ public class Interficie extends JFrame {
 		}else if(colorTrossos.equalsIgnoreCase("green")) {
 			botoTros.setBackground(Color.green);
 		}
-		repaint();
+		
 	}
 
 } 
