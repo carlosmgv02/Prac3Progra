@@ -16,42 +16,7 @@ public class ProgramaEnInterficie {
 		
 		LlistaGeneric<Plantacions> llistaPlantacions = CFitx.leerPlantaciones();
 		
-		Interficie Finestra = new Interficie();
-		//Finestra2 Finestra2 = new Finestra2();
-		//Finestra.setanyActual(llegirAny());
-		int any=Finestra.getAny();
-		
-		//System.out.println("tamare"+ );
-		//Fa falta la funcio per a detectar lo interval
-		
-		int color = (int)CFitx.rodalAbsor(llistaPlantacions, "Finca les pedres", any);
-		if (color < 400000) {
-			Finestra.setColorPedres("black");
-		}else if(color <1000000) {
-			Finestra.setColorPedres("magenta");
-		}else if(color <1005000) {
-			Finestra.setColorPedres("red");
-		}else if(color <1050000) {
-			Finestra.setColorPedres("blue");
-		}else if(color >1050000) {
-			Finestra.setColorPedres("green");
-		}
-
-		color = (int)CFitx.rodalAbsor(llistaPlantacions, "Els trossos", any);
-		if (color < 400000) {
-			Finestra.setColorTrossos("black");
-		}else if(color <1000000) {
-			Finestra.setColorTrossos("magenta");
-		}else if(color <1005000) {
-			Finestra.setColorTrossos("red");
-		}else if(color <1050000) {
-			Finestra.setColorTrossos("blue");
-		}else if(color >1050000) {
-			Finestra.setColorTrossos("green");
-		}
-		Finestra.canviacolors();
-		//Finestra.repaint();
-		//Finestra.set;
+		Interficie Finestra = new Interficie(llistaPlantacions);
 		Finestra.setVisible(true);
 		
 	}

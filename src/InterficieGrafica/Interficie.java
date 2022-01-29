@@ -24,7 +24,7 @@ public class Interficie extends JFrame {
 	private String colorPedres = "black";
 	private String colorTrossos = "black";
 	private int anyActual = 0;
-
+	private static LlistaGeneric<Plantacions>llistaPlantacions;
 	JPanel panel = new JPanel();
 	JLabel info = new JLabel();
 	JTextArea entradaAny = new JTextArea();
@@ -35,9 +35,11 @@ public class Interficie extends JFrame {
 	JLabel verd = new JLabel();
 	JButton botoTros = new JButton();
 	JButton botopedres = new JButton();
-	
+	public static boolean first=false;
 	private int opcio = 0;
-	public Interficie() {
+	public Interficie(LlistaGeneric<Plantacions>llistaPlantacions) {
+		this.llistaPlantacions=llistaPlantacions;
+		
 		llegirAny();
 		//Establir tamany de pantalla
 		this.setSize(500,500);
@@ -48,11 +50,9 @@ public class Interficie extends JFrame {
 		setLocation(100,300);
 		//setLocationRelativeTo(null);
 
-
 		JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
 		fondo.setBounds(0, 0, 500, 500);
 		
-
 		panel.add(fondo);
 
 		iniciarComponents();
@@ -65,8 +65,6 @@ public class Interficie extends JFrame {
 
 		//Quan tanquis la finestra finalitza TOT el programa
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
-
 	}
 	ActionListener saveFile=new ActionListener() {
 		@Override 
@@ -115,18 +113,15 @@ public class Interficie extends JFrame {
 		colocarPanels();
 		colocarBotons();
 	}
-
 	private void colocarPanels() {
 		JLabel etiqueta = new JLabel();
 		JPanel fondo = new JPanel();
-
 		//Espai per a posar la etiqueta que mostrará info
 		info.setBounds(0, 0, 500, 20);
 		info.setBackground(Color.WHITE);
 		info.setOpaque(true);
 		info.setText("Practica 3 feta per Carlos, Genís i Joan");
 		panel.add(info);
-
 
 		/////////////////////////////////////////////////
 		negre.setBackground(Color.black);
@@ -204,7 +199,7 @@ public class Interficie extends JFrame {
 		
 		botopedres.setText("Finca les pedres, creada el 2018");
 		botopedres.setEnabled(true);
-		
+		canviacolors();
 		
 		panel.add(botopedres);
 
@@ -235,7 +230,7 @@ public class Interficie extends JFrame {
 		botoTros.setBounds (0,140, 500, 40);
 		botoTros.setText("Finca els trossos, creada el 2015");
 		botoTros.setEnabled(true);
-		
+		canviacolors();
 		panel.add(botoTros);
 		/*ActionListener oyentdeDeAccio = new ActionListener() {
 			@Override
@@ -300,9 +295,36 @@ public class Interficie extends JFrame {
 		entradaAny.setText("Ara estas a l'any "+anyActual);
 		entradaAny.setAlignmentX(400);
 		panel.add(entradaAny);
+		conditions();
 		colocarBotons();
 		
 		return this.anyActual;
+	}
+	public void conditions() {
+		int color = (int)CFitx.rodalAbsor(llistaPlantacions, "Finca les pedres", anyActual);
+		if (color < 400000) {
+			setColorPedres("black");
+		}else if(color <1000000) {
+			setColorPedres("magenta");
+		}else if(color <1005000) {
+			setColorPedres("red");
+		}else if(color <1050000) {
+			setColorPedres("blue");
+		}else if(color >1050000) {
+			setColorPedres("green");
+		}
+		color = (int)CFitx.rodalAbsor(llistaPlantacions, "Els trossos", anyActual);
+		if (color < 400000) {
+			setColorTrossos("black");
+		}else if(color <1000000) {
+			setColorTrossos("magenta");
+		}else if(color <1005000) {
+			setColorTrossos("red");
+		}else if(color <1050000) {
+			setColorTrossos("blue");
+		}else if(color >1050000) {
+			setColorTrossos("green");
+		}
 	}
 	public void canviacolors() {
 		if(colorPedres.equalsIgnoreCase("black")) {
@@ -316,6 +338,7 @@ public class Interficie extends JFrame {
 			botopedres.setBackground(Color.blue);
 		}else if(colorPedres.equalsIgnoreCase("green")) {
 			botopedres.setBackground(Color.green);
+			botopedres.setForeground(Color.black);
 		}
 		if(colorTrossos.equalsIgnoreCase("black")) {
 			botoTros.setBackground(Color.black);
@@ -328,6 +351,7 @@ public class Interficie extends JFrame {
 			botoTros.setBackground(Color.blue);
 		}else if(colorTrossos.equalsIgnoreCase("green")) {
 			botoTros.setBackground(Color.green);
+			botoTros.setForeground(Color.black);
 		}
 		
 	}
