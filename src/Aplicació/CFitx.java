@@ -237,10 +237,10 @@ public class CFitx {
 		for (int i = 0; i < llistaPlantacions.nElems(); i++) {
 			if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(plant))
 				if (any > llistaPlantacions.consultatIessim(i).getAnyPlantacio()) {
-					System.out.println("Plantació " + llistaPlantacions.consultatIessim(i).getNomPlantacio() + ": ");
+					System.out.println("\nPlantació " + llistaPlantacions.consultatIessim(i).getNomPlantacio() + ": ");
 					for (int j = 0; j < llistaPlantacions.consultatIessim(i).getNelems(); j++) {
 
-						System.out.println("RODAL " + j + ":");
+						System.out.println("RODAL " + j + ", "+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNomTerreny()+" :");
 						for (int k = 0; k < llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNelems(); k++) {
 							int age = any - llistaPlantacions.consultatIessim(i).getAnyPlantacio();
 							if (age < 0) {
@@ -269,6 +269,7 @@ public class CFitx {
 					System.out.println("L'any introduit és anterior a la la plantació "
 							+ llistaPlantacions.consultatIessim(i).getNomPlantacio());
 		}
+		System.out.println();
 		return total1;
 	}
 
