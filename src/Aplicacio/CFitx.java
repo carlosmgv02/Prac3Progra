@@ -1,4 +1,4 @@
-package Aplicació;
+package Aplicacio;
 
 import Dades.*;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-//import Dades.Absorció;
+//import Dades.AbsorciÃ³;
 import Dades.Arboria;
 import Dades.LlistaGeneric;
 import Dades.Plantacions;
@@ -19,10 +19,17 @@ import Dades.Rodals;
 import Dades.Terreny;
 import Exceptions.OutOfRangeException;
 
+/**
+ * Classe per tractar dades dels fitxers i fer cÃ lculs
+ * @author grup 13
+ *
+ */
 public class CFitx {
 	private static Scanner teclado;
 	
-
+	/**
+	 *MÃ¨tode per llegir plantacions
+	 */
 	public static LlistaGeneric<Plantacions> leerPlantaciones() throws FileNotFoundException, OutOfRangeException {
 		LlistaGeneric<Terreny> terreno = leerTerreno();
 		int nLines = 12;
@@ -62,7 +69,9 @@ public class CFitx {
 		}
 		return plantacions;
 	}
-
+	/**
+	 *Mètode per llegir els terrenys de fitxer
+	 */
 	public static LlistaGeneric<Terreny> leerTerreno()
 			throws FileNotFoundException, NumberFormatException, OutOfRangeException {
 		int nLines = 10;
@@ -126,7 +135,9 @@ public class CFitx {
 		}
 		return terreno;
 	}
-
+	/**
+	 *Creem una llista de tipus genÃ¨ric d'arbres
+	 */
 	public static LlistaGeneric<Arboria> leerArboles() throws FileNotFoundException, OutOfRangeException {
 		LlistaGeneric<Arboria> arbres = new LlistaGeneric<Arboria>(7);
 		Arboria arbol = null;
@@ -146,7 +157,9 @@ public class CFitx {
 		}
 		return arbres;
 	}
-
+	/**
+	 *Creem una llista de tipus genÃ¨ric d'arbustos
+	 */
 	public static LlistaGeneric<Arbustiva> leerArbustos() throws FileNotFoundException, OutOfRangeException {
 		LlistaGeneric<Arbustiva> arbustos = new LlistaGeneric<Arbustiva>(4);
 		Arbustiva arbusto = null;
@@ -160,7 +173,9 @@ public class CFitx {
 		}
 		return arbustos;
 	}
-
+	/**
+	 *Comrprova si Ã©s arbÃ²ria
+	 */
 	public static int containsArbol(LlistaGeneric<Arboria> texto, String text) {
 
 		for (int i = 0; i < texto.length(); i++) {
@@ -169,7 +184,9 @@ public class CFitx {
 		}
 		return -1;
 	}
-
+	/**
+	 *Comrprova si Ã©s arbustiva
+	 */
 	public static int containsArbust(LlistaGeneric<Arbustiva> arbust, String text) {
 		for (int i = 0; i < arbust.length(); i++) {
 			if (arbust.consultatIessim(i).getNomCient().equalsIgnoreCase(text))
@@ -177,6 +194,9 @@ public class CFitx {
 		}
 		return -1;
 	}
+	/**
+	 *Comprova l'absorciÃ³ donada una espÃ¨cie i un any'
+	 */
 	public static float absorEspecie(LlistaGeneric<Plantacions>llistaPlantacions,String especie,int any) {
 		float absorc=0;
 		boolean found=false;
@@ -225,11 +245,17 @@ public class CFitx {
 			System.out.println("No s'ha trobat l'element buscat");
 		}
 		catch(NullPointerException e) {
-			System.out.println("No hi ha hagut cap coincidència");
+			System.out.println("No hi ha hagut cap coincidÃ¨ncia");
 		}
 		return 0;
 	}
-
+	/**
+	 * CÃ¡lculo de la absorciÃ³n total de un rodal dada una planta y un aÃ±o
+	 * @param llistaPlantacions lista de las plantaciones leÃ­da de fichero
+	 * @param plant nombre de la planta
+	 * @param any aÃ±o para realizar el cÃ¡lculo
+	 * @return absorciÃ³n del rodal dada la planta y el aÃ±o
+	 */
 	public static float rodalAbsor(LlistaGeneric<Plantacions> llistaPlantacions, String plant, int any) {
 		float total = 0;
 		float total1 = 0;
@@ -237,7 +263,7 @@ public class CFitx {
 		for (int i = 0; i < llistaPlantacions.nElems(); i++) {
 			if (llistaPlantacions.consultatIessim(i).getNomPlantacio().equalsIgnoreCase(plant))
 				if (any > llistaPlantacions.consultatIessim(i).getAnyPlantacio()) {
-					System.out.println("\nPlantació " + llistaPlantacions.consultatIessim(i).getNomPlantacio() + ": ");
+					System.out.println("\nPlantaciÃ³ " + llistaPlantacions.consultatIessim(i).getNomPlantacio() + ": ");
 					for (int j = 0; j < llistaPlantacions.consultatIessim(i).getNelems(); j++) {
 
 						System.out.println("RODAL " + j + ", "+llistaPlantacions.consultatIessim(i).getTipusTerreny(j).getNomTerreny()+" :");
@@ -260,27 +286,30 @@ public class CFitx {
 							 * (i) .getAnyPlantacio());
 							 */
 						}
-						System.out.println("Absorció total del rodal: " + total);
+						System.out.println("AbsorciÃ³ total del rodal: " + total);
 						total1 += total;
 						total = 0;
 
 					}
 				} else
-					System.out.println("L'any introduit és anterior a la la plantació "
+					System.out.println("L'any introduit Ã©s anterior a la la plantaciÃ³ "
 							+ llistaPlantacions.consultatIessim(i).getNomPlantacio());
 		}
 		System.out.println();
 		return total1;
 	}
-
-	public static<E> void escribirFicheroSerializado(LlistaGeneric fitxer){
+	/**
+	 * MÃ©todo para serializar clases y guardarlo en un fichero .dat
+	 * @param fitxer objeto a serializar
+	 */
+	public static void escribirFicheroSerializado(LlistaGeneric fitxer){
 
 		FileOutputStream fichero = null;
 		ObjectOutputStream salida = null;
 		
 		Arbustiva arb=new Arbustiva("Name",2,3);
 		try {
-			// Aquí creo el fichero
+			// AquÃ­ creo el fichero
 			fichero = new FileOutputStream("src/terreny.dat");
 			salida = new ObjectOutputStream(fichero);
 			
@@ -303,6 +332,9 @@ public class CFitx {
 			}
 		}
 	}
+	/**
+	 * Lee un fichero con objeto serializado previamente y lo carga en una variable que imprimimos despuÃ©s
+	 */
 	public static void leerSerializado() {
 		ObjectInputStream inputFile=null;
 		Object llista=new LlistaGeneric<>(2);
@@ -326,10 +358,5 @@ public class CFitx {
 		catch(NullPointerException e) {
 			System.out.println(e.getMessage());
 		}
-		
-		
 	}
-	
-	
-
 }

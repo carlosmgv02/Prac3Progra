@@ -2,8 +2,16 @@ package Dades;
 
 import java.util.Arrays;
 import java.io.Serializable;
-
+/**
+ * Llista que guarda una plantació
+ * @author grup 13
+ *
+ */
 public class Plantacions implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int any;
 	private Rodals[]rodal;
 	private String nomPlantacio;
@@ -19,6 +27,9 @@ public class Plantacions implements Serializable {
 	public void afegirPlanta() {
 		
 	}
+	/**
+	 * Eliminem tot
+	 */
 	public void deleteAll() {
 		any=0;
 		rodal=null;
@@ -40,10 +51,7 @@ public class Plantacions implements Serializable {
 	public void setAnyPlantacio(int anyPlantacio) {
 		this.any = anyPlantacio;
 	}
-	/*
-	plants.consultatIessim(0).getTipusTerreny(1)
-	plants.consultatIessim(0).getTipusRodal(1).getTerreny()
-	*/
+
 	public Rodals getTipusRodal(int i) {
 		return rodal[i];
 	}
@@ -68,9 +76,12 @@ public class Plantacions implements Serializable {
 	public void setSuperficie(int i,float superficie) {
 		this.rodal[i].setSuperficie(superficie);
 	}
+	/**
+	 * Comprovem si hi ha un tipus determinat de terreny a un rodal
+	 */
 	public boolean hasTipusTerreny(String terreny){
-		Rodals[]devolver=new Rodals[rodal.length];
-		int nEl=0;
+		
+		
 		int i=0;
 		for( i=0;rodal[i]!=null;i++) {
 			if(rodal[i].getTerreny().getNomTerreny().equalsIgnoreCase(terreny)) {

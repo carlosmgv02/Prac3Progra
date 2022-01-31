@@ -1,4 +1,4 @@
-package Aplicació;
+package Aplicacio;
 
 import java.io.*;
 import java.util.*;
@@ -7,20 +7,21 @@ import Dades.*;
 import Exceptions.OutOfRangeException;
 
 import java.util.*;
-
+/**
+ * Programa principal
+ * @author grup 13
+ *
+ */
 public class Programa {
 	private static Scanner teclado;
 	public static int operation=0;
 	public static <E> void main(String[] args) throws OutOfRangeException, FileNotFoundException {
+		//CFitx.leerSerializado();
 		mostrarMenu();
-
-
 	}
-	
-	
-
-	
-
+	/**
+	 * Menú principal
+	 */
 	public static void mostrarMenu() throws FileNotFoundException, OutOfRangeException {
 		teclado=new Scanner(System.in);
 		System.out.println("Introdueix l'any actual");
@@ -32,8 +33,7 @@ public class Programa {
 		
 		LlistaGeneric<Terreny> llistaTerreno = CFitx.leerTerreno();
 		boolean leave = false;
-		do {
-			
+		do {	
 			System.out.println("Benvingut al programa, escolleix la opció que vols executar");
 			System.out.println("1- Carregar les dades dels fitxers");
 			System.out.println("2- Llistar les dades de tots els tipus de terrenys");
@@ -109,8 +109,6 @@ public class Programa {
 				
 				break;
 			case 7:
-				boolean printed=false;
-				
 				System.out.println("Introdueixi la especie de la planta a consultar  ->");
 				String especie = new String();
 				teclado.nextLine();
@@ -124,7 +122,7 @@ public class Programa {
 			case 8:
 				boolean valid=true;
 				teclado.nextLine();
-				int plantac=0,tipus=0;
+				int plantac=0;
 				System.out.println("Introdueixi el nom de la plantacio on vol afegir  ->");
 				String plantaciotriada = new String();
 				plantaciotriada = teclado.nextLine();
@@ -242,8 +240,8 @@ public class Programa {
 			case 14:
 				teclado.nextLine();
 				System.out.println("Introdueix el nom de la espècie");
-				String espècie=teclado.nextLine();
-				System.out.println("Absorció total de la espècie l'any "+any+": "+CFitx.absorEspecie(llistaPlantacions, espècie, any));
+				String especie1=teclado.nextLine();
+				System.out.println("Absorció total de la espècie l'any "+any+": "+CFitx.absorEspecie(llistaPlantacions, especie1, any));
 				
 				break;
 			case 15:
@@ -258,6 +256,9 @@ public class Programa {
 	public static void mas(int n) {
 		++n;
 	}
+	/**
+	 * Seleccionem la opció que l'usuari vol executar i comprovem que és vàlida'
+	 */
 	public static int getMenuOption() {
 		int num = 0;
 		teclado = new Scanner(System.in);

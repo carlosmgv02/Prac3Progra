@@ -17,8 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.event.AncestorListener;
 
-import Aplicació.CFitx;
-
+import Aplicacio.CFitx;
+/**
+ * Classe de la interfície gràfica
+ * @author grup 13
+ *
+ */
 public class Interficie extends JFrame {
 	private String colorPedres = "black";
 	private String colorTrossos = "black";
@@ -66,6 +70,9 @@ public class Interficie extends JFrame {
 		//Quan tanquis la finestra finalitza TOT el programa
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
+	/**
+	 *Creem un action listener per a guardar l'arxiu
+	 */
 	ActionListener saveFile=new ActionListener() {
 		@Override 
 		public void actionPerformed(ActionEvent ae) {
@@ -108,10 +115,12 @@ public class Interficie extends JFrame {
 	
 	private void iniciarComponents() {
 
-
 		colocarPanels();
 		colocarBotons();
 	}
+	/**
+	 * Método que inicializa el panel y coloca las etiquetas corrsespondientes
+	 */
 	private void colocarPanels() {
 		JLabel etiqueta = new JLabel();
 		JPanel fondo = new JPanel();
@@ -154,7 +163,9 @@ public class Interficie extends JFrame {
 		llegenda.setText("Negre->40K, Lila->1M, Blau->1M5k, Verd->Mes de 1M5K");
 		panel.add(llegenda);
 	}
-
+	/**
+	 *Disposem els botons a la finestra
+	 */
 	private void colocarBotons() {
 
 		//Crear boto per a sortir
@@ -200,59 +211,25 @@ public class Interficie extends JFrame {
 		
 		panel.add(botopedres);
 
-		/*ActionListener oyentdeDeInfo = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				if(colorPedres.equalsIgnoreCase("black")) {
-					botopedres.setBackground(Color.black);
-				}else if(colorPedres.equalsIgnoreCase("magenta")) {
-					botopedres.setBackground(Color.magenta);
-				}else if(colorPedres.equalsIgnoreCase("red")) {
-					botopedres.setBackground(Color.red);
-				}else if(colorPedres.equalsIgnoreCase("blue")) {
-					botopedres.setBackground(Color.blue);
-				}else if(colorPedres.equalsIgnoreCase("green")) {
-					botopedres.setBackground(Color.green);
-				}
-			}
-		};
-		botopedres.addActionListener(oyentdeDeInfo);*/
-
-
-		//Boto per a posar una opció
-
-
 		botoTros.setBounds (0,140, 500, 40);
 		botoTros.setText("Finca els trossos, creada el 2015");
 		botoTros.setEnabled(true);
 		canviacolors();
 		panel.add(botoTros);
-		/*ActionListener oyentdeDeAccio = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				if(colorTrossos.equalsIgnoreCase("black")) {
-					botoTros.setBackground(Color.black);
-					
-				}else if(colorTrossos.equalsIgnoreCase("magenta")) {
-					botoTros.setBackground(Color.magenta);
-				}else if(colorTrossos.equalsIgnoreCase("red")) {
-					botoTros.setBackground(Color.red);
-				}else if(colorTrossos.equalsIgnoreCase("blue")) {
-					botoTros.setBackground(Color.blue);
-				}else if(colorTrossos.equalsIgnoreCase("green")) {
-					botoTros.setBackground(Color.green);
-				}
-			}
-		};
-		botoTros.addActionListener(oyentdeDeAccio);*/
 	}
-
+	/**
+	 * Getter
+	 * @return opcio
+	 */
 	public int getOpcio() {
 		System.out.println(opcio);
 		return opcio;
-
 	}
-
+	/**
+	 * Booleano comprueba si es un número o no
+	 * @param str supuesto número
+	 * @return true si es número, falso si no
+	 */
 	public static boolean esNumero(String str) { 
 		try {  
 			Double.parseDouble(str);  
@@ -265,18 +242,31 @@ public class Interficie extends JFrame {
 	public void setColorPedres(String colorPedres) {
 		this.colorPedres = colorPedres;
 	}
-
+	/**
+	 * Setter
+	 * @param colorTrossos nuevo color para el botón Trossos
+	 */
 	public void setColorTrossos(String colorTrossos) {
 		this.colorTrossos = colorTrossos;
 	}
+	/**
+	 * Getter
+	 * @return anyActual
+	 */
 	public int getAny() {
 		return anyActual;
 	}
-
+	/**
+	 * Setter
+	 * @param anyActual nuevo año
+	 */
 	public void setanyActual(int anyActual) {
 		this.anyActual = anyActual;
 
 	}
+	/**
+	 * Funció per llegir l'any'
+	 */
 	public int  llegirAny() {
 		String nom = JOptionPane.showInputDialog("Indica a quin any et trobes:");
 		
@@ -294,6 +284,9 @@ public class Interficie extends JFrame {
 		colocarBotons();
 		return this.anyActual;
 	}
+	/**
+	 *Condicions per a la coloració dels botons
+	 */
 	public void conditions() {
 		int color = (int)CFitx.rodalAbsor(llistaPlantacions, "Finca les pedres", anyActual);
 		if (color < 400000) {
@@ -320,6 +313,9 @@ public class Interficie extends JFrame {
 			setColorTrossos("green");
 		}
 	}
+	/**
+	 *Mètode que modifica els colors
+	 */
 	public void canviacolors() {
 		if(colorPedres.equalsIgnoreCase("black")) {
 			botopedres.setBackground(Color.black);

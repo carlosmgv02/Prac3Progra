@@ -2,13 +2,21 @@ package Dades;
 
 import Exceptions.OutOfRangeException;
 import java.io.Serializable;
-
+/**
+ * Classe terreny
+ * @author grup 13
+ *
+ * @param <E> classe que utilitza elements genèrics
+ */
 public class Terreny<E> implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nomTerreny ;
 	private LlistaGeneric<Integer>unitats;
 	private float superf=0;
 	private LlistaGeneric<E>nomPlanta;
-	private LlistaGeneric<Arboria>arbol;
 	private int nElems;
 	public Terreny (String nomTerreny,  E nomPlanta,int unitats) throws OutOfRangeException{
 		this.nomTerreny=nomTerreny;
@@ -22,15 +30,26 @@ public class Terreny<E> implements Serializable {
 		
 
 	}
-	 
+	 /**
+	 * Afegim una planta al terreny
+	 */
 	public void afegirPlanta(E nom,int unitats) throws OutOfRangeException {
 		this.nomPlanta.afegir(nom);
 		this.unitats.afegir(unitats);
 		nElems++;
 	}
+	/**
+	 * Getter
+	 * @param i índice de la posición
+	 * @return elemento posición i
+	 */
 	public int getUnits(int i) {
 		return unitats.consultatIessim(i);
 	}
+	/**
+	 * Getter
+	 * @return String con las unidades que hay
+	 */
 	public String getUnitats(){
 		String text=new String();
 		for(int i=0;unitats.consultatIessim(i)!=null;i++) {
@@ -38,12 +57,25 @@ public class Terreny<E> implements Serializable {
 		}
 		return text;
 	}
+	/**
+	 * Getter
+	 * @return nElems
+	 */
 	public int getNelems() {
 		return nElems;
 	}
+	/**
+	 * Setter
+	 * @param sup superfície nueva
+	 */
 	public void setSup(float sup) {
 		superf=sup;
 	}
+	/**
+	 * Getter
+	 * @param i índice posición
+	 * @return nombre de la posición i
+	 */
 	public String getiNom(int i) {
 		String text=null;
 			
@@ -59,6 +91,11 @@ public class Terreny<E> implements Serializable {
 			
 		
 	}
+	/**
+	 * Setter
+	 * @param nom nombre a establecer
+	 * @param i índice donde se quiere establecer
+	 */
 	public void setiNom(String nom, int i) {
 		if(i<nomPlanta.length()&&!nom.isEmpty()) {
 			if(nomPlanta.consultatIessim(i).getClass().getSimpleName().equalsIgnoreCase("Arboria")) {
@@ -72,6 +109,11 @@ public class Terreny<E> implements Serializable {
 		}			
 			
 	}
+	/**
+	 * Getter
+	 * @param i índice de la planta que se quiere devolver
+	 * @return planta de la posición i
+	 */
 	public Planta getPlanta(int i) {
 		try {
 		return (Planta)nomPlanta.consultatIessim(i);
@@ -79,7 +121,10 @@ public class Terreny<E> implements Serializable {
 			return null;
 		}
 	}
-
+	/**
+	 * Getter
+	 * @return nombre del terreno actual
+	 */
 	public String getNomTerreny() {
 		return nomTerreny;
 	}
