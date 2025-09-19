@@ -119,7 +119,7 @@ public class Interficie extends JFrame {
 		colocarBotons();
 	}
 	/**
-	 * Método que inicializa el panel y coloca las etiquetas corrsespondientes
+	 * Método que inicializa el panel y coloca las etiquetas correspondientes
 	 */
 	private void colocarPanels() {
 		JLabel etiqueta = new JLabel();
